@@ -1,0 +1,296 @@
+body{
+    text-align:center;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    margin:0;
+    height:100%;
+    background-color: #ecf0f1;
+}
+
+h1{
+    font: 400 35px/45px 'Open Sans', Helvetica, sans-serif;
+    padding: 0px 0px 30px 0px;
+    margin:0;
+}
+
+h2{
+    font: 400 25px/35px 'Open Sans', Helvetica, sans-serif;
+    padding: 0px 0px 15px 0px;
+    margin:0;
+}
+
+*:focus{
+    outline:0;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+    font-size: 110%;
+}
+
+#leftContent{
+    width:15%;
+    height:100%;
+    float:left;
+}
+
+#rightContent{
+    width:85%;
+    float:left;
+    height:100%;
+    margin-top: 50px;
+}
+
+ul{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+input[type="checkbox"]{
+    margin-right:10px;
+}
+
+#nav{
+    background-color: #bdc3c7;
+    padding-top:25px;
+    height:100%;
+}
+
+#nav li{
+    height:150px;
+    width:100%;
+    margin:0;
+    padding:0;
+    position:relative;
+    vertical-align: middle;
+    padding: 10px 0px;
+    cursor: pointer;
+    /*position: absolute; 
+    top:50%;*/
+}
+
+#nav li img:hover{
+/*    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;*/
+    -webkit-filter: invert(20%);
+}
+
+#nav li img{
+    vertical-align: middle;
+}
+
+#nav li{
+    -webkit-filter: invert(35%);
+}
+
+.navLabel{
+    padding-top: 10px;
+}
+
+.navContent{
+    /*position: relative; top: -50%*/
+    position: relative;
+    top: 15%;
+}
+
+
+#nav li.selected{
+/*    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;*/
+    -webkit-filter: invert(20%);
+}
+
+
+
+#floorPlan{
+
+}
+
+.circle {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px; 
+    position:absolute;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px -1px #ccc;;
+}
+
+#circle1{
+    top:600px;
+    left:600px;
+}
+
+#circle2{
+    top: 429px;
+    left: 904px;
+}
+
+#circle3{
+    top:350px;
+    left:700px;
+}
+
+#circle4{
+    top:272px;
+    left:850px;
+}
+
+#circle5{
+    top:153px;
+    left:750px;
+}
+
+#circle6{
+    top:500px;
+    left:976px;
+}
+
+.green{
+    background-color: #27ae60;
+}
+
+.red{
+    background-color: #d2322d;
+}
+
+.yellow{
+    background-color: #f1c40f;   
+}
+
+.disabled{
+    background-color: grey !important;
+}
+
+.disabled :hover{
+    opacity: 1 !important;
+}
+
+.button{ 
+    color:#FFFFFF;
+    padding:10px 20px;
+    border:none;
+    font-size:14px;
+    margin:10px 0px;
+    /*min-width:100px;*/
+    cursor:pointer;
+}
+
+.button:hover{
+    -webkit-opacity: 0.8;
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.redButton{
+    background-color: #d2322d;
+    width:100%;
+    margin:10px 0 0 0;
+}
+
+.greenButton{
+    background-color: #008B00;
+}
+
+#usersContent{
+  display:none;  
+}
+
+#machinesContent{
+  display:none;  
+}
+
+#settingsContent{
+  display:none;  
+}
+
+#settingsOptions li{
+    margin-bottom:5px;
+}
+
+.warning{
+    box-sizing:border-box;
+    border: 1px solid #ccc;
+    padding:20px;
+    width: 88.9%;
+    margin: 17px 68px;
+    text-align:left;
+}
+
+.warningIcon{
+    margin-right:20px;
+    vertical-align: middle;
+}
+
+.tile{
+    width: 30%;
+    height: 250px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 17px 17px;
+    padding:20px;
+    box-sizing:border-box;
+    cursor: pointer;
+    box-shadow: 4px 4px 1px -2px #ccc;
+    position:relative;
+}
+
+.tile div{
+    display:inline-block;
+    width:100%;
+}
+
+.tile:hover{
+    box-shadow:5px 5px 3px -2px #bbb;
+}
+
+.tiles{
+    padding:0 50px;
+}
+
+#settingsOptions{
+    margin: 0 20%;
+    text-align: left;
+}
+
+#applyButton{
+    margin-top:50px;
+}
+
+.name{
+    /*font-weight:bold;*/
+    /*margin-bottom:15px;*/
+    font-size:18px;
+}
+
+.info li{
+    margin-bottom:5px;
+}
+
+.status{
+    width:100.5%;
+    height:20px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+#stop{
+    position: absolute;
+    right:100px;
+    top:70px;
+    display:none;
+}
