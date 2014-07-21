@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify
 from flask import request
 from werkzeug.contrib.cache import SimpleCache
 import time
@@ -32,10 +32,6 @@ def index_page():
 		return "This is what Lesia needs"
 	else:
 		return "Under Funstruction"
-		
-@app.route("/overview", methods=["GET"])
-def overview():
-	return render_template("index.html")
 
 @app.route("/stop", methods=['GET', 'POST'])
 def stop_system():
