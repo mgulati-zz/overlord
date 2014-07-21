@@ -1,0 +1,1 @@
+USER_STATES = {"normal": 0, "fatigued": 1, "stressed": 2}

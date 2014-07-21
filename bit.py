@@ -7,15 +7,17 @@ import time
 
 device = bitalino.BITalino()
 macAddress = "98:d3:31:b2:13:9a"
-SamplingRate = 1000
+SamplingRate = 100 #Samples/Second
 device.open(macAddress, SamplingRate = SamplingRate) # Set MAC address and sampling rate
 time.sleep(1)
 
 PORTS = {"EMG": 0, "ECG": 2}
 
-device.start([PORTS["EMG"]])
+device.start([PORTS["ECG"]])
 name = raw_input("Enter Name: ")
 fname = raw_input("Enter File Name: ")
+numsamples = raw_input("How Many Samples: ")
+
 
 outfile = open(fname + ".csv", "wb")
 writer = csv.writer(outfile, delimiter='\t', quotechar='"', quoting=csv.QUOTE_NONE)
@@ -35,13 +37,13 @@ def relative_time():
 
 print "Alright man we're going!"
 
-i=0
 recorded = []
 start_time = cur_time()
-while i<200:
-	data = device.read(100)
+i=0
+while i<numsamples:
+	data = device.read(10)
 	value = baseline(data[5,:])
-	print value
+	print "Sample " + str(i) +": " + str(value)
 	writer.writerow(str(relative_time()) + "," + str(value))
 	i += 1
 
