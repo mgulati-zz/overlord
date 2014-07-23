@@ -24,7 +24,7 @@ class Classifier_Thread(threading.Thread):
 
 	def set_heart_rate(self, new_rate):
 		self.heartrate = new_rate/HEART_RATE_NORMALIZATION_FACTOR
-		classify_user()
+		self.classify_user()
 
 	def set_eda_reading(self, new_reading):
 		print "setting EDA reading to " + str(new_reading)
