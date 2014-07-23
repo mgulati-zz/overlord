@@ -32,3 +32,32 @@ function disable(num){
   $("#circle" + num).addClass("disabled");
 }
 
+window.setInterval(function(){
+  $.ajax( {
+    // url: "http://127.0.0.1:5000/users", 
+    url: "jsonData.js", 
+    success: function(data) {
+      console.log(testData);
+      $.each(testData, function(k,v) {
+        $("#" + k + " .value.bpm").html(testData[k]['bpm']);
+        $("#" + k + " .value.stress").html(testData[k]['eda']);
+        $("#" + k + " .machine").html(testData[k]['machine']);
+
+        var statusVal = testData[k]['status'];
+        if (statusVal == "2"){ 
+          status="red";
+        }
+        else if (statusVal == "1"){
+          status="yellow";
+        }
+        else status="green"
+
+        $("#"+ k + " .status").addClass(status);
+
+      })
+    }
+  }); 
+}, 1000);
+
+
+

@@ -15,6 +15,11 @@ http://www.tipue.com/tipr
      color: #333;
      padding: 9px 17px;
 }
+
+.tipr_content .name{
+	font-size:18px;
+}
+
 .tipr_container_bottom
 {
      display: none;

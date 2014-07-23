@@ -1,6 +1,12 @@
+/*@font-face {
+    font-family: 'Raleway', sans-serif;
+    src: url(sansation_light.woff);
+}*/
+
 body{
     text-align:center;
     font-family: 'Open Sans', Helvetica, sans-serif;
+    /*font-family:Raleway;*/
     margin:0;
     height:100%;
     background-color: #ecf0f1;
@@ -228,6 +234,7 @@ input[type="checkbox"]{
     width: 88.9%;
     margin: 17px 68px;
     text-align:left;
+    background-color: #F2F6F7;
 }
 
 .warningIcon{
@@ -246,6 +253,8 @@ input[type="checkbox"]{
     cursor: pointer;
     box-shadow: 4px 4px 1px -2px #ccc;
     position:relative;
+    text-align:left;
+    background-color: #F2F6F7;
 }
 
 .tile div{
@@ -261,6 +270,16 @@ input[type="checkbox"]{
     padding:0 50px;
 }
 
+.data .value{
+    font-size:30px;
+    width:45%;
+}
+
+.data .measurement{
+    width:45%;
+}
+
+
 #settingsOptions{
     margin: 0 20%;
     text-align: left;
@@ -270,10 +289,16 @@ input[type="checkbox"]{
     margin-top:50px;
 }
 
-.name{
+
+.info .name{
     /*font-weight:bold;*/
     /*margin-bottom:15px;*/
-    font-size:18px;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.data{
+    margin-top:10px;
 }
 
 .info li{
@@ -286,6 +311,8 @@ input[type="checkbox"]{
     position: absolute;
     bottom: 0px;
     left: 0px;
+    font-size: 0px;
+    line-height: 0;
 }
 
 #stop{
@@ -293,4 +320,10 @@ input[type="checkbox"]{
     right:100px;
     top:70px;
     display:none;
+}
+
+.tile .status .stateBlock{
+    display:inline-block;
+    width:20px;
+    height:20px;
 }
