@@ -72,41 +72,57 @@ function enable(num) {
   $("#circle" + num).removeClass("disabled");
 }
 
+function changeStatus(el, status) {
+  statuses = ["green", "yellow", "red"]
+  el.addClass(status)
+  statuses.map(function(item) {
+    if (item != status) {
+      el.removeClass(status)
+    }
+  })
+}
+
 window.setInterval(function(){
-  // $.ajax( {
-  //   // url: "http://127.0.0.1:5000/users", 
-  //   url: "jsonData.json", 
-  //   success: function(data) {
-  //     console.log(testData);
-  //     $.each(testData, function(k,v) {
-  //       $("#" + k + " .value.bpm").html(testData[k]['bpm']);
-  //       $("#" + k + " .value.stress").html(testData[k]['eda']);
-  //       $("#" + k + " .machine").html(testData[k]['machine']);
+  $.ajax( {
+    url: "http://127.0.0.1:5000/status", 
+    //url: "jsonData.json", 
+    success: function(data) {
+      $.each(data, function(k,v) {
+        $("#" + k + " .value.bpm").html(data[k]['heartbeat']);
+        $("#" + k + " .value.stress").html(data[k]['state']);
+        $("#" + k + " .machine").html(data[k]['machine']);
 
-  //       var statusVal = testData[k]['status'];
-  //       if (statusVal == "2"){ 
-  //         status="red";
-  //       }
-  //       else if (statusVal == "1"){
-  //         status="yellow";
-  //       }
-  //       else status="green"
+        var statusVal = data[k]['state'];
+        if (statusVal == "2"){ 
+          status="red";
+        }
+        else if (statusVal == "1"){
+          status="yellow";
+        }
+        else {
+          status="green"
+        }
 
-  //       $("#"+ k + " .status").addClass(status);
+        resetStatus($("#"+ k + " .status"));
+        resetStatus($("#" + k + "-circle"));
 
-  //     })
-  //   }
-  // }); 
-  // $.ajax( {
-  //   url: "http://127.0.0.1:5000/stop",
-  //   success: function(data) {
-  //     if (data=="false"){
-  //       enable(4);
-  //     } else if (data=="true"){
-  //       disable(4);
-  //     }
-  //   }
-  // });
+        $("#"+ k + " .status").addClass(status);
+        $("#circle4").addClass(status);
+
+      })
+    }
+  }); 
+
+  $.ajax( {
+    url: "http://127.0.0.1:5000/stop",
+    success: function(data) {
+      if (data=="false"){
+        enable(4);
+      } else if (data=="true"){
+        disable(4);
+      }
+    }
+  });
 }, 100);
 
 

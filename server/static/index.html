@@ -7,6 +7,7 @@
 		  <script src="./js/main.js"></script>
 		  <link href="tipr/tipr.css" rel="stylesheet">
 			<script src="tipr/tipr.js"></script>
+			<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
@@ -56,14 +57,14 @@
 				<div class="warning"><img src="img/warning.png" class="warningIcon">Your machinists seem most fatigued on Fridays.</div>
 
 				<div class="tiles" id="userTiles">	
-					<div class="tile" onclick="getData('user', 'Adam Wootton')">
+					<div class="tile" onclick="getData('user', 'Adam Wootton')" id="adam">
 						<!-- <ul class="info">
 							<li class="name">ADAM WOOTTON</li>
 							<li class="machineName">Drill Press Gamma</li>
 						</ul> -->
-						<div class="info" id="adam">
+						<div class="info">
 							<div class="name">ADAM WOOTTON</div>
-							<div>Drill Press</div>
+							<div class="machine">Drill Press</div>
 <!-- 							<div>MACHINE</div> -->
 							<div class="data">
 								<div class="value bpm" id="test">85</div>
@@ -72,12 +73,28 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status yellow"></div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Lesia Nalepa')">
-						<div class="info" id="lesia">
+					<div class="tile" onclick="getData('user', 'Lesia Nalepa')" id="lesia">
+						<div class="info">
 							<div class="name">LESIA NALEPA</div>
-							<div>Drill Press</div>
+							<div class="machine">Drill Press</div>
 							<div class="data">
 								<div class="value bpm">85</div>
 								<div class="value stress">68%</div>
@@ -85,12 +102,28 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status green"></div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Mayank Gulati')">
-						<div class="info" id="mayank">
+					<div class="tile" onclick="getData('user', 'Mayank Gulati')" id="mayank">
+						<div class="info">
 							<div class="name">MAYANK GULATI</div>
-							<div>Grinding Machine</div>
+							<div class="machine">Grinding Machine</div>
 							<div class="data">
 								<div class="value bpm">85</div>
 								<div class="value stress">68%</div>
@@ -98,12 +131,28 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status red"></div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock "></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Nicholas Mostowich')">
-						<div class="info" id="nick">
+					<div class="tile" onclick="getData('user', 'Nicholas Mostowich')" id="nick">
+						<div class="info">
 							<div class="name">NICK MOSTOWICH</div>
-							<div>Wood Lathe</div>
+							<div class="machine">Wood Lathe</div>
 							<div class="data">
 								<div class="value bpm">85</div>
 								<div class="value stress">68%</div>
@@ -111,12 +160,28 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status green"></div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Tom Kelly')">
-						<div class="info" id="tom">
+					<div class="tile" onclick="getData('user', 'Tom Kelly')" id="tom">
+						<div class="info">
 							<div class="name">TOM KELLY</div>
-							<div>Table Saw</div>
+							<div class="machine">Table Saw</div>
 							<div class="data">
 								<div class="value bpm">85</div>
 								<div class="value stress">68%</div>
@@ -124,12 +189,28 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status green"></div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Victor Vucicevich')">
-						<div class="info" id="victor">
+					<div class="tile" onclick="getData('user', 'Victor Vucicevich')" id="victor">
+						<div class="info">
 							<div class="name">VICTOR VUCICEVICH</div>
-							<div>Band Saw</div>
+							<div class="machine">Band Saw</div>
 							<div class="data">
 								<div class="value bpm">85</div>
 								<div class="value stress">68%</div>
@@ -137,7 +218,23 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status green"></div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+						</div>
 					</div>
 				</div>
 

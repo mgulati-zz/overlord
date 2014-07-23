@@ -33,4 +33,4 @@ class Classifier_Thread(threading.Thread):
 
 	def classify_user(self):
 		print "Classifying:\n     Heart: " + str(self.heartrate) +"\n     EDA: " + str(self.eda_reading)
-		pub.sendMessage('classifier.new_class', new_class=self.current_state)
+		pub.sendMessage('classifier.new_class', new_class=self.current_state, heartrate=self.heartrate*HEART_RATE_NORMALIZATION_FACTOR)
