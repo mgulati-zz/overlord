@@ -18,6 +18,17 @@ $(document).ready(function() {
   $(".circle").on('click', '.redButton', function(){
     disable($(this).parents('.circle').attr('id').slice(6));
   })
+  $(".circle").on('hover', function(e) {
+    console.log(e.target)
+    if ($(e.target).hasClass("disabled") && $(e.target).hasClass("circle")) {
+      num = $(e.target).attr("id").slice(6)
+      setTimeout(function() {
+        console.log("disabling")
+        $("#btn" + num).addClass("disabled")
+        $("#btn" + num).html("Disabled")
+      }, 1)
+    }
+  })
 
 });
 
@@ -29,13 +40,14 @@ function getData(type, userName){
 
 function disable(num){
   $('#btn' + num).addClass("disabled");
+  $("#btn" + num).html("Disabled");
   $("#circle" + num).addClass("disabled");
 }
 
 window.setInterval(function(){
   $.ajax( {
     // url: "http://127.0.0.1:5000/users", 
-    url: "jsonData.js", 
+    url: "jsonData.json", 
     success: function(data) {
       console.log(testData);
       $.each(testData, function(k,v) {
