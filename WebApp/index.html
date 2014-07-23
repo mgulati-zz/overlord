@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		  <link rel="stylesheet" type="text/css" href="./css/main.css">
+		  <script src="jquery-1.8.3.min.js"></script>
+		  <script src="./js/main.js"></script>
+		  <link href="tipr/tipr.css" rel="stylesheet">
+			<script src="tipr/tipr.js"></script>
+			<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+		<div id="leftContent">
+			<ul id="nav">
+				<li id="live" class="selected">
+					<div class="navContent">
+						<img src="img/monitor.png">
+						<div class="navLabel">Live</div>
+					</div>
+				</li>
+				<li id="users">
+					<div class="navContent">
+						<img src="img/users.png">
+						<div class="navLabel">Users</div>
+					</div>
+				</li>
+				<li id="machines">
+					<div class="navContent">
+						<img src="img/machine.png">
+						<div class="navLabel">Machines</div>
+					</div>
+				</li>	
+				<li id="settings">
+					<div class="navContent">
+						<img src="img/settings.png">
+						<div class="navLabel">Settings</div>
+					</div>
+				</li>			
+			</ul>
+		</div>
+
+		<div id="rightContent">
+			<div id="liveContent" class="content">
+				<h1>E5 Machine Shop</h1>
+				<img id="stop" src="img/stop.png">
+				<img src="img/floorPlan.png" id="floorPlan">
+				<div class="circle green tip" data-tip="<span><ul class='tooltipContent'><li class='name'>LESIA NALEPA</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn1'>Disable</button>" id="circle1"></div>
+				<div class="circle red tip" data-tip="<span><ul class='tooltipContent'><li class='name'>MAYANK GULATI</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn2'>Disable</button>" id="circle2"></div>
+				<div class="circle green tip" data-tip="<span><ul class='tooltipContent'><li class='name'>NICK MOSTOWICH</li>Bandsaw</li></ul></span><button class='button redButton' id='btn3'>Disable</button>" id="circle3"></div>
+				<div class="circle yellow tip" data-tip="<span><ul class='tooltipContent'><li class='name'>ADAM WOOTTON</li>Bandsaw</li></ul></span><button class='button redButton' id='btn4'>Disable</button>" id="circle4"></div>
+				<div class="circle green tip" data-tip="<span><ul class='tooltipContent'><li class='name'>TOM KELLY</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn5'>Disable</button>" id="circle5"></div>
+				<div class="circle green tip" data-tip="<span><ul class='tooltipContent'><li class='name'>VICTOR VUC</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn6'>Disable</button>" id="circle6"></div>
+			</div>
+
+			<div id="usersContent" class="content">
+				<div class="warning"><img src="img/warning.png" class="warningIcon">Your machinists seem most fatigued on Fridays.</div>
+
+				<div class="tiles" id="userTiles">	
+					<div class="tile" onclick="getData('user', 'Adam Wootton')" id="adam">
+						<!-- <ul class="info">
+							<li class="name">ADAM WOOTTON</li>
+							<li class="machineName">Drill Press Gamma</li>
+						</ul> -->
+						<div class="info">
+							<div class="name">ADAM WOOTTON</div>
+							<div class="machine">Drill Press</div>
+<!-- 							<div>MACHINE</div> -->
+							<div class="data">
+								<div class="value bpm" id="test">85</div>
+								<div class="value stress">68%</div>
+								<div class="measurement">HEARTRATE</div>
+								<div class="measurement">STRESS</div>
+							</div>
+						</div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+						</div>
+					</div>
+					<div class="tile" onclick="getData('user', 'Lesia Nalepa')" id="lesia">
+						<div class="info">
+							<div class="name">LESIA NALEPA</div>
+							<div class="machine">Drill Press</div>
+							<div class="data">
+								<div class="value bpm">85</div>
+								<div class="value stress">68%</div>
+								<div class="measurement">HEARTRATE</div>
+								<div class="measurement">STRESS</div>
+							</div>
+						</div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+						</div>
+					</div>
+					<div class="tile" onclick="getData('user', 'Mayank Gulati')" id="mayank">
+						<div class="info">
+							<div class="name">MAYANK GULATI</div>
+							<div class="machine">Grinding Machine</div>
+							<div class="data">
+								<div class="value bpm">85</div>
+								<div class="value stress">68%</div>
+								<div class="measurement">HEARTRATE</div>
+								<div class="measurement">STRESS</div>
+							</div>
+						</div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock "></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+						</div>
+					</div>
+					<div class="tile" onclick="getData('user', 'Nicholas Mostowich')" id="nick">
+						<div class="info">
+							<div class="name">NICK MOSTOWICH</div>
+							<div class="machine">Wood Lathe</div>
+							<div class="data">
+								<div class="value bpm">85</div>
+								<div class="value stress">68%</div>
+								<div class="measurement">HEARTRATE</div>
+								<div class="measurement">STRESS</div>
+							</div>
+						</div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+						</div>
+					</div>
+					<div class="tile" onclick="getData('user', 'Tom Kelly')" id="tom">
+						<div class="info">
+							<div class="name">TOM KELLY</div>
+							<div class="machine">Table Saw</div>
+							<div class="data">
+								<div class="value bpm">85</div>
+								<div class="value stress">68%</div>
+								<div class="measurement">HEARTRATE</div>
+								<div class="measurement">STRESS</div>
+							</div>
+						</div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock red"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+						</div>
+					</div>
+					<div class="tile" onclick="getData('user', 'Victor Vucicevich')" id="victor">
+						<div class="info">
+							<div class="name">VICTOR VUCICEVICH</div>
+							<div class="machine">Band Saw</div>
+							<div class="data">
+								<div class="value bpm">85</div>
+								<div class="value stress">68%</div>
+								<div class="measurement">HEARTRATE</div>
+								<div class="measurement">STRESS</div>
+							</div>
+						</div>
+						<div class="status">
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock yellow"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock green"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock disabled"></div>
+							<div class="stateBlock green"></div>
+						</div>
+					</div>
+				</div>
+
+				<div id="user" class="specific">
+					<h2></h2>
+				</div>
+			</div>
+
+
+			<div id="machinesContent" class="content">
+				<div class="warning"><img src="img/warning.png" class="warningIcon">The kill switch on the drill press is pressed more than the kill switch on all other machines.</div>
+				<div class="tiles" id="machineTiles">		
+					<div class="tile" onclick="getData('machine', 'Drill Press')">
+						<ul class="info">
+							<li class="name">DRILL PRESS</li>
+							<li>Current User: </li>
+						</ul>
+						<div class="status red"></div>
+					</div>
+					<div class="tile" onclick="getData('machine', 'Band Saw')">
+						<ul class="info">
+							<li class="name">BAND SAW</li>
+							<li>Current User: </li>
+						</ul>
+						<div class="status yellow"></div>
+					</div>
+					<div class="tile" onclick="getData('machine', 'Wood Lathe')">
+						<ul class="info">
+							<li class="name">WOOD LATHE</li>
+							<li>Current User: </li>
+						</ul>
+						<div class="status green"></div>
+					</div>
+					<div class="tile" onclick="getData('machine', 'Milling Machine')">
+						<ul class="info">
+							<li class="name">MILLING MACHINE</li>
+							<li>Current User: </li>
+						</ul>	
+						<div class="status green"></div>				
+					</div>
+					<div class="tile" onclick="getData('machine', 'Table Saw')">
+						<ul class="info">
+							<li class="name">TABLE SAW</li>
+							<li>Current User: </li>
+						</ul>
+						<div class="status green"></div>
+					</div>
+					<div class="tile" onclick="getData('machine', 'Grinding Machine')">
+						<ul class="info">
+							<li class="name">GRINDING MACHINE</li>
+							<li>Current User: </li>
+						</ul>
+						<div class="status green"></div>
+					</div>
+				</div>
+
+				<div id="machine" class="specific">
+					<h2></h2>
+				</div>
+			</div>
+			<div id="settingsContent" class="content">
+				<h1>Settings</h1>
+				<div id="settingsOptions">
+					Allow machine use when:
+					<ul>
+						<li><input type="checkbox" name="" value="">User is trained</li>
+						<li><input type="checkbox" name="" value="">User is fatigued</li>
+						<li><input type="checkbox" name="" value="">User is stressed</li>
+						<li><input type="checkbox" name="" value="">Checked machine state</li>
+					</ul>
+					<button class='button greenButton' id="applyButton" onclick='disable(1)'>Apply</button>
+				</div>
+			</div>
+
+
+		</div>
+			<!-- <button class="button">Disable All</button>	 -->
+	</body>
+	<script>
+		$(document).ready(function() {
+		     $('.tip').tipr();
+		});
+	</script>
+</html>
