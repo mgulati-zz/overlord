@@ -77,7 +77,7 @@ function changeStatus(el, status) {
   el.addClass(status)
   statuses.map(function(item) {
     if (item != status) {
-      el.removeClass(status)
+      el.removeClass(item)
     }
   })
 }
@@ -92,7 +92,7 @@ window.setInterval(function(){
         $("#" + k + " .value.stress").html(data[k]['state']);
         $("#" + k + " .machine").html(data[k]['machine']);
 
-        var statusVal = data[k]['state'];
+        var statusVal = data[k]['state'].toString();
         if (statusVal == "2"){ 
           status="red";
         }
@@ -103,11 +103,8 @@ window.setInterval(function(){
           status="green"
         }
 
-        resetStatus($("#"+ k + " .status"));
-        resetStatus($("#" + k + "-circle"));
-
-        $("#"+ k + " .status").addClass(status);
-        $("#circle4").addClass(status);
+        changeStatus($("#"+ k + " .status"), status);
+        changeStatus($("#circle4"), status);
 
       })
     }
