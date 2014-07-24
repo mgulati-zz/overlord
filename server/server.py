@@ -9,6 +9,7 @@ import classifier
 import electricImp
 import urllib2
 import pdb
+import json
 
 
 USER_STATES = classifier.USER_STATES
@@ -50,6 +51,7 @@ bitalino_thread.start()
 classifier_thread.start()
 
 imp = electricImp.Imp
+
 ###############################
 # URL endpoints
 ###############################
@@ -64,13 +66,14 @@ def index_page():
 def update_stopped_status():
 	response = make_response("")
 	if request.method == 'GET':
-		resp=imp.get_state()
-		print(resp)
+		imp_status=json.loads(imp.get_state().read())
+		cache.set("machine-is-stopped", "true" if imp_status['killswitch']==1 else "false")
 		response = make_response(cache.get("machine-is-stopped"))
 	elif request.method == 'POST':
 		data = request.get_json()
-		cache.set("machine-is-stopped", data['stopped'])
-		resp = imp.send_state(data['stopped'])
+		imp.send_state(data['stopped'])
+		imp_status=json.loads(imp.get_state().read())
+		cache.set("machine-is-stopped", "true" if imp_status['killswitch']==1 else "false")
 		response = make_response(cache.get("machine-is-stopped"))
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response

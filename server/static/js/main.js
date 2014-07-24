@@ -67,22 +67,28 @@ function requestState(num, state) {
 
 function disabling(num) {
   $("#btn" + num).html("Disabling..");
+  $("#btn" + num).addClass("progress");
+
 }
 
 function disable(num){
   $('#btn' + num).addClass("greenButton");
   $("#btn" + num).html("Enable");
   $("#circle" + num).addClass("disabled");
+  $("#btn" + num).removeClass("progress");
+
 }
 
 function enable(num) {
   $('#btn' + num).removeClass("greenButton");
   $("#btn" + num).html("Disable");
   $("#circle" + num).removeClass("disabled");
+  $("#btn" + num).removeClass("progress");
 }
 
 function enabling(num) {
   $("#btn" + num).html("Enabling..");
+  $("#btn" + num).addClass("progress");
 }
 
 function changeStatus(el, status) {
@@ -126,14 +132,16 @@ window.setInterval(function(){
   $.ajax( {
     url: "/stop",
     success: function(data) {
-      if (data=="false"){
-        enable(4);
-      } else if (data=="true"){
-        disable(4);
+      if (!$("#btn4").hasClass("progress")) {
+        if (data=="false"){
+          enable(4);
+        } else if (data=="true"){
+          disable(4);
+        }
       }
     }
   });
-}, 100);
+}, 300);
 
 
 
