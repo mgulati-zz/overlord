@@ -1,26 +1,28 @@
-// create a global variabled called led, 
-// and assign pin9 to it
-input <- hardware.pin2;
-killswitch <- hardware.pin9;
+// assign the pins we are using
+killswitch <- hardware.pin8;
+solenoid <- hardware.pin9;
  
-// configure switch to be a digital output
-killswitch.configure(DIGITAL_OUT);
-state <- "false";
-// create a global variable to store current
-// state of the machine
-function setStatus(stopState) {
-  state = stopState;
+// configure solenoid to be a digital output
+solenoid.configure(DIGITAL_OUT);
 
-  // write current state to led pin
-  if (state == "false") {
-    killswitch.write(0);
+//global variables
+data <- {"solenoid":0, "killswitch": killswitch.read()}
+
+function pushPull(state) {
+  if (state == "true") {
+      data["solenoid"] = 1;
   } else {
-    killswitch.write(1);
+      data["solenoid"] = 0;
   }
-  server.log(state);
-  // schedule imp to wakeup in .5 seconds and do it again. 
+  solenoid.write(data["solenoid"]);
+  agent.send("update", data)
+}
+
+function buttonPress() {
+    data["killswitch"] = killswitch.read();
+    agent.send("update", data)
 }
  
 // start the loop
-//input.configure(DIGITAL_IN_PULLUP, blink);
-agent.on("setStopped", setStatus);
+killswitch.configure(DIGITAL_IN, buttonPress);
+agent.on("setStopped", pushPull);
