@@ -23,16 +23,20 @@ $(document).ready(function() {
     if (offline) {
       disable(num);
     } else {
-      disabling(num);
-      requestDisable()
+      if ($(this).hasClass('greenButton')) {
+        enabling(num);
+        requestState(num, "false");
+      } else {
+        disabling(num);
+        requestState(num, "true")
+      }
     }
   });
 
   $(".circle").on('hover', function(e) {
     if ($(e.target).hasClass("disabled") && $(e.target).hasClass("circle")) {
-      $btn = $("#btn" + $(e.target).attr("id").slice(6))
-      $btn.addClass("disabled")
-      $btn.html("Disabled")
+      num = $(e.target).attr("id").slice(6)
+      disable(num)
     }
   });
 
@@ -44,32 +48,41 @@ function getData(type, userName){
     $("#" + type + "Tiles").css("display", "none"); 
 }
 
-function requestDisable(num) {
+function requestState(num, state) {
   $.ajax({
-    url: "http://127.0.0.1:5000/stop",
+    url: "/stop",
     type: "POST",
-    data: JSON.stringify({"stopped": "true"}),
+    data: JSON.stringify({"stopped": state}),
     success: function() {
-      disable(num);
+      if (state=="true") {
+        disable(num);
+      } else if (state=="false") {
+        enable(num);
+      }
     },
     contentType: "application/json",
     dataType: "json"
   })
 }
+
 function disabling(num) {
   $("#btn" + num).html("Disabling..");
 }
 
 function disable(num){
-  $('#btn' + num).addClass("disabled");
-  $("#btn" + num).html("Disabled");
+  $('#btn' + num).addClass("greenButton");
+  $("#btn" + num).html("Enable");
   $("#circle" + num).addClass("disabled");
 }
 
 function enable(num) {
-  $('#btn' + num).removeClass("disabled");
+  $('#btn' + num).removeClass("greenButton");
   $("#btn" + num).html("Disable");
   $("#circle" + num).removeClass("disabled");
+}
+
+function enabling(num) {
+  $("#btn" + num).html("Enabling..");
 }
 
 function changeStatus(el, status) {
@@ -84,7 +97,7 @@ function changeStatus(el, status) {
 
 window.setInterval(function(){
   $.ajax( {
-    url: "http://127.0.0.1:5000/status", 
+    url: "/status", 
     //url: "jsonData.json", 
     success: function(data) {
       $.each(data, function(k,v) {
@@ -111,7 +124,7 @@ window.setInterval(function(){
   }); 
 
   $.ajax( {
-    url: "http://127.0.0.1:5000/stop",
+    url: "/stop",
     success: function(data) {
       if (data=="false"){
         enable(4);
