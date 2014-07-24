@@ -65,7 +65,8 @@ def update_stopped_status():
 	elif request.method == 'POST':
 		data = request.get_json()
 		cache.set("machine-is-stopped", data['stopped'])
-		resp = urllib2.urlopen("https://agent.electricimp.com/DISiQRNUIly9?stopped=" + data['stopped']).read()
+		#resp = urllib2.urlopen("https://agent.electricimp.com/DISiQRNUIly9?stopped=" + data['stopped']).read()
+		resp = urllib2.urlopen("https://agent.electricimp.com/j9D9R5FQYOBy?stopped=" + data['stopped']).read()
 		print(resp)
 		response = make_response(cache.get("machine-is-stopped"))
 	response.headers['Access-Control-Allow-Origin'] = "*"

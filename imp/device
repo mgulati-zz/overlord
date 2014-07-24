@@ -3,11 +3,11 @@
 input <- hardware.pin2;
 killswitch <- hardware.pin9;
  
-// configure led to be a digital output
+// configure switch to be a digital output
 killswitch.configure(DIGITAL_OUT);
 state <- "false";
 // create a global variable to store current
-// state of the LED
+// state of the machine
 function setStatus(stopState) {
   state = stopState;
 
@@ -17,7 +17,6 @@ function setStatus(stopState) {
   } else {
     killswitch.write(1);
   }
-  killswitch.write(state);
   server.log(state);
   // schedule imp to wakeup in .5 seconds and do it again. 
 }
