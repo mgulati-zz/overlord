@@ -1,0 +1,27 @@
+// create a global variabled called led, 
+// and assign pin9 to it
+input <- hardware.pin2;
+killswitch <- hardware.pin9;
+ 
+// configure led to be a digital output
+killswitch.configure(DIGITAL_OUT);
+state <- "false";
+// create a global variable to store current
+// state of the LED
+function setStatus(stopState) {
+  state = stopState;
+
+  // write current state to led pin
+  if (state == "false") {
+    killswitch.write(0);
+  } else {
+    killswitch.write(1);
+  }
+  killswitch.write(state);
+  server.log(state);
+  // schedule imp to wakeup in .5 seconds and do it again. 
+}
+ 
+// start the loop
+//input.configure(DIGITAL_IN_PULLUP, blink);
+agent.on("setStopped", setStatus);

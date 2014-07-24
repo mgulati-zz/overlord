@@ -3,6 +3,8 @@ offline = false
 
 $(document).ready(function() {
   //$("body").css("height", window.innerHeight);
+  $('.tip').tipr();
+
   $("#nav").css("height", window.innerHeight);
 
   $("#nav li").click(function(){
@@ -29,10 +31,8 @@ $(document).ready(function() {
   $(".circle").on('hover', function(e) {
     if ($(e.target).hasClass("disabled") && $(e.target).hasClass("circle")) {
       $btn = $("#btn" + $(e.target).attr("id").slice(6))
-      setTimeout(function() {
-        $btn.addClass("disabled")
-        $btn.html("Disabled")
-      }, 1)
+      $btn.addClass("disabled")
+      $btn.html("Disabled")
     }
   });
 
