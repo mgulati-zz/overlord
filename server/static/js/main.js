@@ -5,8 +5,6 @@ $(document).ready(function() {
   //$("body").css("height", window.innerHeight);
   $('.tip').tipr();
 
-  $("#nav").css("height", window.innerHeight);
-
   $("#nav li").click(function(){
     var id = $(this).attr("id");
     $("li").removeClass("selected");
