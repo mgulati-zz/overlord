@@ -238,6 +238,7 @@ input[type="checkbox"]{
     text-align:left;
     background-color: #F2F6F7;
     display:inline-block;
+    box-shadow: 4px 4px 1px -2px #ccc;
 }
 
 .warningIcon{
@@ -246,7 +247,7 @@ input[type="checkbox"]{
 }
 
 .tile{
-    width: 30%;
+    width: 338px;
     height: 250px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -258,6 +259,21 @@ input[type="checkbox"]{
     position:relative;
     text-align:left;
     background-color: #F2F6F7;
+}
+
+.tileButton{
+    width: 338px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 17px 17px;
+    padding:20px;
+    box-sizing:border-box;
+/*    cursor: pointer;*/
+    box-shadow: 4px 4px 1px -2px #ccc;
+    position:relative;
+    text-align:left;
+    background-color: #F2F6F7;  
+    height:90px; 
 }
 
 .tile div{
@@ -289,6 +305,7 @@ input[type="checkbox"]{
 
 #settingsOptions{
     text-align: left;
+    padding:0 50px;
 }
 
 #applyButton{
@@ -355,7 +372,7 @@ input[type="checkbox"]{
 }
 
 .settingsTile{
-    width: 21%;
+    width: 244px;
     height: 150px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -366,6 +383,7 @@ input[type="checkbox"]{
     position:relative;
     text-align:left;
     background-color: #F2F6F7;
+    vertical-align:top;
 }
 
 .settingsTile .button{
