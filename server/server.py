@@ -1,5 +1,4 @@
-from flask import Flask, jsonify, make_response
-from flask import request
+from flask import Flask, jsonify, make_response, request
 from werkzeug.contrib.cache import SimpleCache
 from pubsub import pub
 import time
@@ -7,8 +6,6 @@ import threading
 import bitalinoThread
 import classifier
 import electricImp
-import urllib2
-import pdb
 import json
 
 
@@ -22,7 +19,7 @@ app = Flask(__name__)
 
 
 def initialize_cache():
-	cache.set("machine-is-stopped", 'false') #represents the machine state in the real world
+	cache.set("machine-is-stopped", {"solenoid": 0, "killswitch": 0}) #represents the machine state in the real world
 	cache.set("user-state", USER_STATES["normal"])
 	cache.set("user-heartrate", 0)
 
@@ -67,14 +64,14 @@ def update_stopped_status():
 	response = make_response("")
 	if request.method == 'GET':
 		imp_status=json.loads(imp.get_state().read())
-		cache.set("machine-is-stopped", "true" if imp_status['killswitch']==1 else "false")
-		response = make_response(cache.get("machine-is-stopped"))
+		cache.set("machine-is-stopped", imp_status)
+		response = make_response(jsonify(cache.get("machine-is-stopped")))
 	elif request.method == 'POST':
 		data = request.get_json()
 		imp.send_state(data['stopped'])
 		imp_status=json.loads(imp.get_state().read())
-		cache.set("machine-is-stopped", "true" if imp_status['killswitch']==1 else "false")
-		response = make_response(cache.get("machine-is-stopped"))
+		cache.set("machine-is-stopped", imp_status)
+		response = make_response(jsonify(cache.get("machine-is-stopped")))
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
 

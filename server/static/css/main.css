@@ -161,18 +161,6 @@ input[type="checkbox"]{
     left:976px;
 }
 
-.green{
-    background-color: #27ae60;
-}
-
-.red{
-    background-color: #d2322d;
-}
-
-.yellow{
-    background-color: #f1c40f;   
-}
-
 .disabled{
     background-color: grey !important;
 }
@@ -215,6 +203,26 @@ input[type="checkbox"]{
 #usersContent, #machinesContent, #settingsContent {
   display:none; 
   height:100%; 
+}
+
+.green{
+    background-color: #27ae60;
+}
+
+.red{
+    background-color: #d2322d;
+}
+
+.yellow{
+    background-color: #f1c40f;   
+}
+
+#usersContent{
+  display:none;  
+}
+
+#machinesContent{
+  display:none;  
 }
 
 #settingsContent{
