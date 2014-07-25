@@ -95,4 +95,3 @@ def get_status():
 
 if __name__ == "__main__":
 	app.run(debug=True) #debug True auto restarts server on code change
-	print "Server still works with Bitalino error plz stawp"

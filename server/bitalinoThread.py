@@ -6,7 +6,6 @@ from pubsub import pub
 MAC_ADDRESS = "98:d3:31:b2:13:9a" #aa is the other groups. 9a is ours
 SAMPLING_RATE = 100
 BITALINO_PORTS = {"EDA": 3}
-MICROSIEMENS_MULTIPLIER = 1031.25 #OpenSignals multiplies the data by this to get uS
 
 class Bitalino_Thread(threading.Thread):
 	def __init__(self):
