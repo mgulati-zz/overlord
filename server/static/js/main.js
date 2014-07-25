@@ -61,7 +61,12 @@ function requestState(num, state) {
     type: "POST",
     data: JSON.stringify({"stopped": state}),
     success: function(data) {
-      resp = machine.interpretState(data);
+      if (state == "false") {
+        machine.setState(SPECIAL_NUMBER, MACHINE_ENABLED)
+      } else if (state == "true") {
+        machine.setState(SPECIAL_NUMBER, MACHINE_DISABLED)
+      }
+      //resp = machine.interpretState(data);
     },
     contentType: "application/json",
     dataType: "json"
