@@ -8,8 +8,9 @@ body{
     font-family: 'Open Sans', Helvetica, sans-serif;
     /*font-family:Raleway;*/
     margin:0;
-    height:100%;
+    height:100vh;
     background-color: #ecf0f1;
+    overflow:hidden;
 }
 
 h1{
@@ -160,18 +161,6 @@ input[type="checkbox"]{
     left:976px;
 }
 
-.green{
-    background-color: #27ae60;
-}
-
-.red{
-    background-color: #d2322d;
-}
-
-.yellow{
-    background-color: #f1c40f;   
-}
-
 .disabled{
     background-color: grey !important;
 }
@@ -211,6 +200,23 @@ input[type="checkbox"]{
     background-color: #008B00;
 }
 
+#usersContent, #machinesContent, #settingsContent {
+  display:none; 
+  height:100%; 
+}
+
+.green{
+    background-color: #27ae60;
+}
+
+.red{
+    background-color: #d2322d;
+}
+
+.yellow{
+    background-color: #f1c40f;   
+}
+
 #usersContent{
   display:none;  
 }
@@ -220,21 +226,18 @@ input[type="checkbox"]{
 }
 
 #settingsContent{
-  display:none;  
-}
-
-#settingsOptions li{
-    margin-bottom:5px;
+    overflow:auto;
 }
 
 .warning{
     box-sizing:border-box;
     border: 1px solid #ccc;
     padding:20px;
-    width: 88.9%;
+/*    width: 50%;*/
     margin: 17px 68px;
     text-align:left;
     background-color: #F2F6F7;
+    display:inline-block;
 }
 
 .warningIcon{
@@ -250,7 +253,7 @@ input[type="checkbox"]{
     margin: 17px 17px;
     padding:20px;
     box-sizing:border-box;
-    cursor: pointer;
+/*    cursor: pointer;*/
     box-shadow: 4px 4px 1px -2px #ccc;
     position:relative;
     text-align:left;
@@ -264,6 +267,10 @@ input[type="checkbox"]{
 
 .tile:hover{
     box-shadow:5px 5px 3px -2px #bbb;
+}
+
+.tile .machine{
+    margin-bottom:20px;
 }
 
 .tiles{
@@ -281,7 +288,6 @@ input[type="checkbox"]{
 
 
 #settingsOptions{
-    margin: 0 20%;
     text-align: left;
 }
 
@@ -291,10 +297,7 @@ input[type="checkbox"]{
 
 
 .info .name{
-    /*font-weight:bold;*/
-    /*margin-bottom:15px;*/
     font-size:24px;
-    margin-bottom:10px;
 }
 
 .data{
@@ -336,3 +339,55 @@ input[type="checkbox"]{
     bottom: -5px;*/ 
     border-right: 2px solid #d2322d;
 }
+
+.tile .time{
+    position:absolute;
+    bottom:22px;
+    font-size:14px;
+}
+
+.tile #startTime{
+    left:5px;
+}
+
+.tile #endTime{
+    right:5px;
+}
+
+.settingsTile{
+    width: 21%;
+    height: 150px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 17px 17px;
+    box-sizing:border-box;
+/*    cursor: pointer;*/
+    box-shadow: 4px 4px 1px -2px #ccc;
+    position:relative;
+    text-align:left;
+    background-color: #F2F6F7;
+}
+
+.settingsTile .button{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0px;
+    left:0px;
+}
+
+.settingsTile .settingsOption{
+    padding: 20px;
+    display: inline-block;
+    height: 100px;
+    width: 100%;
+    box-sizing:border-box;
+}
+
+.row{
+    display:inline;
+    height:160px;
+}
+
+
+
