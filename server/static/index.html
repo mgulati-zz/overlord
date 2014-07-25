@@ -54,10 +54,17 @@
 			</div>
 
 			<div id="usersContent" class="content">
-				<div class="warning"><img src="img/warning.png" class="warningIcon">Your machinists seem most fatigued on Fridays.</div>
+				
 
 				<div class="tiles" id="userTiles">	
-					<div class="tile" onclick="getData('user', 'Adam Wootton')" id="adam">
+					<div class="warning">
+					<img src="img/warning.png" class="warningIcon">
+						Your machinists seem most fatigued on Fridays.
+					</div>
+					<div class="warning"></div>
+					<!-- <button class="button">Add User</button> -->
+
+					<div class="tile" id="adam">
 						<!-- <ul class="info">
 							<li class="name">ADAM WOOTTON</li>
 							<li class="machineName">Drill Press Gamma</li>
@@ -73,6 +80,8 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
+						<span id="startTime" class="time">24h</span>
+						<span id="endTime" class="time">Present</span>
 						<div class="status">
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
@@ -91,7 +100,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Lesia Nalepa')" id="lesia">
+					<div class="tile" id="lesia">
 						<div class="info">
 							<div class="name">LESIA NALEPA</div>
 							<div class="machine">Drill Press</div>
@@ -102,7 +111,9 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status">
+						<span id="startTime" class="time">24h</span>
+						<span id="endTime" class="time">Present</span>
+						<div class="status green">
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
 							<div class="stateBlock disabled"></div>
@@ -120,7 +131,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Mayank Gulati')" id="mayank">
+					<div class="tile" id="mayank">
 						<div class="info">
 							<div class="name">MAYANK GULATI</div>
 							<div class="machine">Grinding Machine</div>
@@ -131,7 +142,9 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status">
+						<span id="startTime" class="time">24h</span>
+						<span id="endTime" class="time">Present</span>
+						<div class="status green">
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
@@ -149,7 +162,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Nicholas Mostowich')" id="nick">
+					<div class="tile" id="nick">
 						<div class="info">
 							<div class="name">NICK MOSTOWICH</div>
 							<div class="machine">Wood Lathe</div>
@@ -160,7 +173,9 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status">
+						<span id="startTime" class="time">24h</span>
+						<span id="endTime" class="time">Present</span>
+						<div class="status green">
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
 							<div class="stateBlock disabled"></div>
@@ -178,7 +193,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Tom Kelly')" id="tom">
+					<div class="tile" id="tom">
 						<div class="info">
 							<div class="name">TOM KELLY</div>
 							<div class="machine">Table Saw</div>
@@ -189,7 +204,9 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status">
+						<span id="startTime" class="time">24h</span>
+						<span id="endTime" class="time">Present</span>
+						<div class="status green">
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
 							<div class="stateBlock disabled"></div>
@@ -207,7 +224,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('user', 'Victor Vucicevich')" id="victor">
+					<div class="tile" id="victor">
 						<div class="info">
 							<div class="name">VICTOR VUCICEVICH</div>
 							<div class="machine">Band Saw</div>
@@ -218,7 +235,9 @@
 								<div class="measurement">STRESS</div>
 							</div>
 						</div>
-						<div class="status">
+						<span id="startTime" class="time">24h</span>
+						<span id="endTime" class="time">Present</span>
+						<div class="status green">
 							<div class="stateBlock green"></div>
 							<div class="stateBlock green"></div>
 							<div class="stateBlock disabled"></div>
@@ -245,9 +264,12 @@
 
 
 			<div id="machinesContent" class="content">
-				<div class="warning"><img src="img/warning.png" class="warningIcon">The kill switch on the drill press is pressed more than the kill switch on all other machines.</div>
+				<div class="warning">
+					<img src="img/warning.png" class="warningIcon">
+					The kill switch on the drill press is pressed more than the kill switch on all other machines.
+				</div>
 				<div class="tiles" id="machineTiles">		
-					<div class="tile" onclick="getData('machine', 'Drill Press')">
+					<div class="tile">
 						<ul class="info">
 							<li class="name">DRILL PRESS</li>
 							<li>Current User: </li>
@@ -270,7 +292,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('machine', 'Band Saw')">
+					<div class="tile">
 						<ul class="info">
 							<li class="name">BAND SAW</li>
 							<li>Current User: </li>
@@ -293,7 +315,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('machine', 'Wood Lathe')">
+					<div class="tile">
 						<ul class="info">
 							<li class="name">WOOD LATHE</li>
 							<li>Current User: </li>
@@ -316,7 +338,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('machine', 'Milling Machine')">
+					<div class="tile">
 						<ul class="info">
 							<li class="name">MILLING MACHINE</li>
 							<li>Current User: </li>
@@ -339,7 +361,7 @@
 							<div class="stateBlock green"></div>
 						</div>				
 					</div>
-					<div class="tile" onclick="getData('machine', 'Table Saw')">
+					<div class="tile">
 						<ul class="info">
 							<li class="name">TABLE SAW</li>
 							<li>Current User: </li>
@@ -362,7 +384,7 @@
 							<div class="stateBlock green"></div>
 						</div>
 					</div>
-					<div class="tile" onclick="getData('machine', 'Grinding Machine')">
+					<div class="tile">
 						<ul class="info">
 							<li class="name">GRINDING MACHINE</li>
 							<li>Current User: </li>
@@ -392,17 +414,89 @@
 				</div>
 			</div>
 			<div id="settingsContent" class="content">
-				<h1>Settings</h1>
+<!-- 				<h1>Settings</h1> -->
 				<div id="settingsOptions">
-					Allow machine use when:
-					<ul>
-						<li><input type="checkbox" name="" value="">User is trained</li>
-						<li><input type="checkbox" name="" value="">User is fatigued</li>
-						<li><input type="checkbox" name="" value="">User is stressed</li>
-						<li><input type="checkbox" name="" value="">Checked machine state</li>
+
+					<h2>Detection</h2><p>Factors to check to allow usage</p>
+					
+					<ul class="row">
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is the machine shop open?</p></div>
+							<button class="button green">Set Hours</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is there earthquakes coming?</p></div>
+							<button class="button green">Choose Natural Disasters</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is the user trained for machine?</p></div>	
+							<button class="button green">Manage Users</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is the machine operational?</p></div>	
+							<button class="button green">Manage Machines</button>			
+						</li>
 					</ul>
-					<button class='button greenButton' id="applyButton" onclick='disable(1)'>Apply</button>
-				</div>
+
+					<h2>Continuous Monitoring</h2><p></p>
+					<ul class="row">
+						<li class="settingsTile">
+							<div class="settingsOption"><p>EDA signals<br/>Skin Conductance</p></div>
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>ECG Signals<br/>Heartbeat</p></div>
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>User stays near machine</p></div>	
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is the machine operational?</p></div>	
+							<button class="button green">Manage Threshold</button>			
+						</li>
+					</ul>
+
+					<h2>Soft Prevention</h2><p></p>
+					<ul class="row">
+						<li class="settingsTile">
+							<div class="settingsOption"><p>EDA signals<br/>Skin Conductance</p></div>
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>ECG Signals<br/>Heartbeat</p></div>
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>User stays near machine</p></div>	
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is the machine operational?</p></div>	
+							<button class="button green">Manage Threshold</button>			
+						</li>
+					</ul>
+
+					<h2>Hard prevention</h2><p></p>
+					<ul class="row">
+						<li class="settingsTile">
+							<div class="settingsOption"><p>EDA signals<br/>Skin Conductance</p></div>
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>ECG Signals<br/>Heartbeat</p></div>
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>User stays near machine</p></div>	
+							<button class="button green">Manage Threshold</button>
+						</li>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Is the machine operational?</p></div>	
+							<button class="button green">Manage Threshold</button>			
+						</li>
+				</ul>
 			</div>
 
 
