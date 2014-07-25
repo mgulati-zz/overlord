@@ -1,4 +1,0 @@
-bitalino
-pybluez
-pyserial
-numpy
