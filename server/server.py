@@ -15,6 +15,7 @@ USER_STATES = classifier.USER_STATES
 # Caching
 ###############################
 cache = SimpleCache(default_timeout=99999999)
+
 app = Flask(__name__, static_url_path='')
 
 def initialize_cache():
@@ -45,8 +46,8 @@ bitalino_thread = bitalinoThread.Bitalino_Thread()
 classifier_thread = classifier.Classifier_Thread()
 bitalino_thread.start()
 classifier_thread.start()
-
 imp = electricImp.Imp
+
 ###############################
 # URL endpoints
 ###############################
@@ -96,4 +97,3 @@ def get_status():
 if __name__ == "__main__":
 	app.run(debug=True) #debug True auto restarts server on code change
 	print "Server still works with Bitalino error plz stawp"
-
