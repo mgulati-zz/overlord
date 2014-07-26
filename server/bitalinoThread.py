@@ -31,12 +31,12 @@ class Bitalino_Thread(threading.Thread):
 		eda_reading = data[:,5]
 		self.device.trigger([0,0,0,0])
 		net_deviance = self.previous_mean * numpy.nanstd(eda_reading)
-		self.previous_mean = numpy.mean(eda_reading)
 		deviation = numpy.nanstd(eda_reading)
 		if deviation > 45:
 			print "greater than 45"
 		self.deviations.append(deviation) #nanstd ignores NaNs in case our data is borked
-		pub.sendMessage('bitalino.new_data', new_data=eda_reading)
+		pub.sendMessage('bitalino.new_data', new_eda_std=deviation, new_eda_mean=self.previous_mean)
+		self.previous_mean = numpy.mean(eda_reading)
 
 	def cleanup(self):
 		stopped = self.device.stop()

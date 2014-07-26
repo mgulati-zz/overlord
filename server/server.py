@@ -21,29 +21,35 @@ app = Flask(__name__, static_url_path='')
 def initialize_cache():
 	cache.set("machine-is-stopped", {"solenoid": 0, "killswitch": 0}) #represents the machine state in the real world
 	cache.set("user-state", USER_STATES["stressed"])
-	cache.set("user-heartrate", 85)
+	cache.set("user-eda-std", 5)
+	cache.set("user-eda-mean", 10)
+
 
 initialize_cache()
 
 ###############################
 # Threading
 ###############################
-def on_new_bitalino_data(new_data):
-	pub.sendMessage('classifier.new_eda_measurement', new_reading=5)
+def on_new_bitalino_data(new_eda_std, new_eda_mean):
+	cache.set("user-eda-std", new_eda_std)
+	cache.set("user-eda-mean", new_eda_mean)
+	pub.sendMessage('classifier.set_eda', new_eda_std=5, new_eda_mean=10)
 
-def on_new_classification(new_class, heartrate=0):
+def on_new_classification(new_class, eda_std, eda_mean):
 	current_state = "normal"
+	print "new class is " + str(new_class) 
 	for state, value in USER_STATES.items():
 		if value == new_class:
 			current_state = state
 			cache.set("user-state", value)
-			cache.set("user-heartrate", heartrate)
+			cache.set("user-eda-std", eda_std)
+			cache.set("user-eda-mean", eda_mean)
 
 pub.subscribe(on_new_bitalino_data, 'bitalino.new_data')
 pub.subscribe(on_new_classification, 'classifier.new_class')
 bitalino_thread = bitalinoThread.Bitalino_Thread()
 classifier_thread = classifier.Classifier_Thread()
-bitalino_thread.start()
+#bitalino_thread.start()
 classifier_thread.start()
 imp = electricImp.Imp
 
@@ -77,6 +83,15 @@ def update_heartrate():
 	elif request.method == 'POST':
 		pub.sendMessage('classifier.new_heart_rate', new_rate=float(request.form['rate']))
 		return 'Updated heart rate'
+
+@app.route("/eda", methods=['GET', 'POST'])
+def set_eda():
+	if request.method == 'GET':
+		return jsonify({"eda_std": cache.get("user-eda-std"),"eda_mean": cache.get("user-eda-mean")})
+	elif request.method == 'POST':
+		pub.sendMessage('classifier.set_eda', new_eda_std=float(request.form['eda_std']), 
+											  new_eda_mean=float(request.form['eda_mean']))
+		return 'Updated eda'
 
 @app.route("/status", methods=["GET"])
 def get_status():
