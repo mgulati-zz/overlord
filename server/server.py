@@ -48,7 +48,7 @@ bitalino_thread.start()
 classifier_thread.start()
 
 imp = electricImp.Imp
-
+print "Server still works with Bitalino error plz stawp"
 ###############################
 # URL endpoints
 ###############################
