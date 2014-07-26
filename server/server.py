@@ -15,8 +15,7 @@ USER_STATES = classifier.USER_STATES
 # Caching
 ###############################
 cache = SimpleCache(default_timeout=99999999)
-app = Flask(__name__)
-
+app = Flask(__name__, static_url_path='')
 
 def initialize_cache():
 	cache.set("machine-is-stopped", {"solenoid": 0, "killswitch": 0}) #represents the machine state in the real world
@@ -48,7 +47,6 @@ bitalino_thread.start()
 classifier_thread.start()
 
 imp = electricImp.Imp
-print "Server still works with Bitalino error plz stawp"
 ###############################
 # URL endpoints
 ###############################
@@ -57,7 +55,7 @@ def index_page():
 	if request.method == 'POST':
 		return "This is what Lesia needs"
 	else:
-		return "Under Funstruction"
+		return app.send_static_file('index.html')
 
 @app.route("/stop", methods=['GET', 'POST'])
 def update_stopped_status():
@@ -97,3 +95,5 @@ def get_status():
 
 if __name__ == "__main__":
 	app.run(debug=True) #debug True auto restarts server on code change
+	print "Server still works with Bitalino error plz stawp"
+
