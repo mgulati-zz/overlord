@@ -103,10 +103,14 @@ input[type="checkbox"]{
     -webkit-filter: invert(20%);
 }
 
-
+#liveView{
+    position:relative;
+    width:560px;
+    margin:auto;
+}
 
 #floorPlan{
-
+    position:relative;
 }
 
 .circle {
@@ -119,33 +123,33 @@ input[type="checkbox"]{
 }
 
 #circle1{
-    top:600px;
-    left:600px;
+    top: 475px;
+    left: 51px;
 }
 
 #circle2{
-    top: 429px;
-    left: 904px;
+    top: 304px;
+    left: 355px;
 }
 
 #circle3{
-    top:350px;
-    left:700px;
+    top: 225px;
+    left:151px;
 }
 
 #circle4{
-    top:272px;
-    left:850px;
+    top: 147px;
+    left:301px;
 }
 
 #circle5{
-    top:153px;
-    left:750px;
+    top: 28px;
+    left: 201px;
 }
 
 #circle6{
-    top:500px;
-    left:976px;
+    top: 375px;
+    left: 427px;
 }
 
 .disabled{

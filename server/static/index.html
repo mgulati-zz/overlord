@@ -43,13 +43,15 @@
 		<div id="rightContent">
 			<div id="liveContent" class="content">
 				<h1>E5 Machine Shop</h1>
-				<img src="img/floorPlan.png" id="floorPlan">
-				<div class="circle green tip lesia" data-tip="<span><ul class='tooltipContent'><li class='name'>LESIA NALEPA</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn1'>Disable</button>" id="circle1"></div>
-				<div class="circle green tip mayank" data-tip="<span><ul class='tooltipContent'><li class='name'>MAYANK GULATI</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn2'>Disable</button>" id="circle2"></div>
-				<div class="circle green tip nick" data-tip="<span><ul class='tooltipContent'><li class='name'>NICK MOSTOWICH</li>Bandsaw</li></ul></span><button class='button redButton' id='btn3'>Disable</button>" id="circle3"></div>
-				<div class="circle yellow tip adam" data-tip="<span><ul class='tooltipContent'><li class='name'>ADAM WOOTTON</li>Bandsaw</li></ul></span><button class='button redButton' id='btn4'>Disable</button>" id="circle4"></div>
-				<div class="circle green tip tom" data-tip="<span><ul class='tooltipContent'><li class='name'>TOM KELLY</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn5'>Disable</button>" id="circle5"></div>
-				<div class="circle green tip victor" data-tip="<span><ul class='tooltipContent'><li class='name'>VICTOR VUC</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn6'>Disable</button>" id="circle6"></div>
+				<div id="liveView">
+					<img src="img/floorPlan.png" id="floorPlan">
+					<div class="circle green tip lesia" data-tip="<span><ul class='tooltipContent'><li class='name'>LESIA NALEPA</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn1'>Disable</button>" id="circle1"></div>
+					<div class="circle green tip mayank" data-tip="<span><ul class='tooltipContent'><li class='name'>MAYANK GULATI</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn2'>Disable</button>" id="circle2"></div>
+					<div class="circle green tip nick" data-tip="<span><ul class='tooltipContent'><li class='name'>NICK MOSTOWICH</li>Bandsaw</li></ul></span><button class='button redButton' id='btn3'>Disable</button>" id="circle3"></div>
+					<div class="circle yellow tip adam" data-tip="<span><ul class='tooltipContent'><li class='name'>ADAM WOOTTON</li>Bandsaw</li></ul></span><button class='button redButton' id='btn4'>Disable</button>" id="circle4"></div>
+					<div class="circle green tip tom" data-tip="<span><ul class='tooltipContent'><li class='name'>TOM KELLY</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn5'>Disable</button>" id="circle5"></div>
+					<div class="circle green tip victor" data-tip="<span><ul class='tooltipContent'><li class='name'>VICTOR VUC</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn6'>Disable</button>" id="circle6"></div>
+				</div>
 			</div>
 
 			<div id="usersContent" class="content">
@@ -421,8 +423,8 @@
 						<li class="settingsTile unselected">
 							<div class="settingsOption"><img src="img/userRestrictions.png"><p>Set user restrictions</p></div>
 						</li>
-						<li class="settingsTile rightMargin">
-							<div class="settingsOption"><img src="img/clock.png"><p>Set shop hours</p></div>
+						<li class="settingsTile rightMargin unselected">
+							<div class="settingsOption"><img src="img/machineRestrictions.png"><p>Set machine restrictions</p></div>
 						</li>
 						<li class="settingsTile">
 							<div class="settingsOption"><img src="img/stress.png"><p>Track user stress</p></div>				
@@ -431,10 +433,10 @@
 							<div class="settingsOption"><img src="img/fatigue.png"><p>Track user fatigue</p></div>			
 						</li>
 						<li class="settingsTile bottomMargin">
-							<div class="settingsOption"><p>???</p></div>
+							<div class="settingsOption"><img src="img/clock.png"><p>Set shop hours</p></div>
 						</li>
-						<li class="settingsTile rightMargin bottomMargin">
-							<div class="settingsOption"><img src="img/machineRestrictions.png"><p>Set machine restrictions</p></div>
+						<li class="settingsTile rightMargin bottomMargin unselected">
+							<div class="settingsOption"><img src="img/tornado.png"><p>Set natural disaster restrictions</p></div>
 						</li>
 						<li class="settingsTile unselected bottomMargin">
 							<div class="settingsOption"><img src="img/gesture.png"><p>Track user gestures</p></div>	
@@ -444,17 +446,17 @@
 						</li>
 						<h2>Prevention</h2><h2 class="second">Analytics</h2>
 						<li class="settingsTile">
-							<div class="settingsOption"><p>Allow automatic machine shutoff</p></div>
+							<div class="settingsOption"><img src="img/automatic.png"><p>Allow automatic machine shutoff</p></div>
 						</li>
 						<li class="settingsTile rightMargin">
-							<div class="settingsOption"><p>Allow remote machine shutoff</p></div>
+							<div class="settingsOption"><img src="img/remote.png"><p>Allow remote machine shutoff</p></div>
 						</li>
 
 						<li class="settingsTile">
 							<div class="settingsOption"><img src="img/history.png"><p>Record usage history</p></div>	
 						</li>
 						<li class="settingsTile">
-							<div class="settingsOption"><p>Provide recommendations</p></div>				
+							<div class="settingsOption"><img src="img/lightbulb.png"><p>Provide recommendations</p></div>				
 						</li>
 					</ul>
 			</div>
