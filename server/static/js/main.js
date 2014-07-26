@@ -191,7 +191,6 @@ window.setInterval(function(){
     success: function(data) {
       $.each(data, function(k,v) {
         $("#" + k + " .value.bpm").html(data[k]['heartrate']);
-        debugger
         $("#" + k + " .value.stress").html(data[k]['state']);
         $("#" + k + " .machine").html(data[k]['machine']);
 
