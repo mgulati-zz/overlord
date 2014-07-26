@@ -62,7 +62,6 @@ input[type="checkbox"]{
     background-color: #bdc3c7;
     padding-top:25px;
     height:100vh;
-    overflow:hidden;
 }
 
 #nav li{
@@ -252,6 +251,7 @@ input[type="checkbox"]{
     position:relative;
     text-align:left;
     background-color: #F2F6F7;
+    cursor:pointer;
 }
 
 .tileButton{
@@ -403,7 +403,7 @@ span{
 }
 
 .settingsTile .settingsOption{
-    padding: 20px;
+    padding: 30px 20px 20px 20px;
     display: inline-block;
     height: 100px;
     width: 100%;
