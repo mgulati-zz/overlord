@@ -38,7 +38,6 @@ def on_new_classification(new_class, heartrate=0):
 			current_state = state
 			cache.set("user-state", value)
 			cache.set("user-heartrate", heartrate)
-			print "User is now class " + state
 
 pub.subscribe(on_new_bitalino_data, 'bitalino.new_data')
 pub.subscribe(on_new_classification, 'classifier.new_class')

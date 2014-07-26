@@ -28,12 +28,10 @@ class Classifier_Thread(threading.Thread):
 		self.classify_current_user()
 
 	def set_eda_reading(self, new_reading):
-		print "setting EDA reading to " + str(new_reading)
 		self.eda_reading = new_reading/EDA_NORMALIZATION_FACTOR
 		self.classify_current_user()
 
 	def classify_current_user(self):
-		print "Classifying:\n     Heart: " + str(self.heartrate) +"\n     EDA: " + str(self.eda_reading)
 		pub.sendMessage('classifier.new_class', new_class=self.current_state, heartrate=self.heartrate*HEART_RATE_NORMALIZATION_FACTOR)
 
 def classify_user(heart_rate, eda_variance, normalized_time, machine_weight):

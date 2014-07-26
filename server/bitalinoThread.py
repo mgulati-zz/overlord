@@ -5,40 +5,40 @@ from pubsub import pub
 
 MAC_ADDRESS = "98:d3:31:b2:13:9a" #aa is the other groups. 9a is ours
 SAMPLING_RATE = 100
-BITALINO_PORTS = {"EMG": 0, "EDA": 1, "ECG": 2, "ACC": 3, "LUX": 4, "ABAT": 5}
-
+BITALINO_PORTS = {"EDA": 3}
+MICROSIEMENS_MULTIPLIER = 1031.25 #OpenSignals multiplies the data by this to get uS
 
 class Bitalino_Thread(threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
 		self.threadID = 0
 		self.name = "Bitalino Connection"
+		self.deviations = []
 
 	def run(self):
-		self.device = bitalino.BITalino()
+		self.device = bitalino.BITalino(MAC_ADDRESS)
 		print "Connecting to Bitalino at " + MAC_ADDRESS
-		self.device.open(MAC_ADDRESS, SamplingRate = SAMPLING_RATE)
-		self.device.start([ BITALINO_PORTS["EDA"] ])
+		self.device.start(SAMPLING_RATE, [ BITALINO_PORTS["EDA"] ])
 		print "Done Connecting"
-		# while True:
-		# 	self.take_reading(50)
-		self.take_reading(500)
-		self.cleanup()
+		for i in xrange(0,5):
+		 	self.take_reading(5*SAMPLING_RATE)
+		print self.deviations
+		print "Max: " + str(numpy.max(self.deviations))
+		print "Min: " + str(numpy.min(self.deviations))
+		print "Mean: " + str(numpy.mean(self.deviations))
 
 	def take_reading(self, samples):
 		self.device.trigger([0,0,1,0]) #digi 2 is the LED
 		data = self.device.read(samples)
 		print data
-		self.device.stop()
-		print "Stopped. Trying another 5"
-		data = self.device.read(5)
-		print data
-		eda_reading = data[5,:]
+		eda_reading = data[:,5]
 		self.device.trigger([0,0,0,0])
-		print "Max: " + str(numpy.max(eda_reading))
-		print "Min: " + str(numpy.min(eda_reading))
 		print "Mean: " + str(numpy.mean(eda_reading))
-		print "Standard Deviation: " + str(numpy.nanstd(eda_reading)) #nanstd ignores NaNs in case our data is borked
+		print "Deviation: " + str(numpy.nanstd(eda_reading))
+		deviation = numpy.nanstd(eda_reading)
+		if deviation > 45:
+			print "greater than 45"
+		self.deviations.append(deviation) #nanstd ignores NaNs in case our data is borked
 		pub.sendMessage('bitalino.new_data', new_data=eda_reading)
 
 	def cleanup(self):
