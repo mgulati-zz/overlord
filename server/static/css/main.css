@@ -157,6 +157,10 @@ input[type="checkbox"]{
     opacity: 1 !important;
 }
 
+.machineDisabled {
+    opacity: 0.5;
+}
+
 .button{ 
     color:#FFFFFF;
     padding:10px 20px;

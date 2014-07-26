@@ -85,7 +85,15 @@ def update_heartrate():
 
 @app.route("/status", methods=["GET"])
 def get_status():
-	return jsonify({"adam": {"heartrate": cache.get("user-heartrate"), "state": cache.get("user-state"), "machine": "Bandsaw"}})
+	return jsonify(
+		{"adam": {"heartrate": cache.get("user-heartrate"), "state": cache.get("user-state"), "machine": "Bandsaw"},
+		"mayank": {"heartrate": 100, "state": 0, "machine": "Sex LOL"},
+		"nick": {"heartrate": 120, "state": 1, "machine": "Generic Mill 101"},
+		"tom": {"heartrate": 20, "state": 2, "machine": "Drillpress"},
+		"victor": {"heartrate": 40, "state": 0, "machine": "O O O O"},
+		"lesia": {"heartrate": 60, "state": 0, "machine": "Mayank"}
+		}
+	)
 
 if __name__ == "__main__":
 	app.run(debug=True) #debug True auto restarts server on code change

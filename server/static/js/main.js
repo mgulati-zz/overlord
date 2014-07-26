@@ -1,6 +1,7 @@
 
 OFFLINE = false
 
+//visual colour states
 MACHINE_DISABLED = "green"
 MACHINE_STOPPED = "yellow"
 MACHINE_ENABLED = "red"
@@ -106,6 +107,7 @@ User.prototype = {
 
 function Machine(state) {
   this.state=state
+  this.el = $("#bandsaw")
 }
 
 Machine.prototype = {
@@ -113,6 +115,7 @@ Machine.prototype = {
     changeColour($('#btn' + num), MACHINE_DISABLED)
     $("#btn" + num).html("Enable");
     $("#btn" + num).removeClass("progress");
+    this.el.addClass("machineDisabled")
     user.showDisabled(num);
   },
   disabling: function(num) {
@@ -127,6 +130,7 @@ Machine.prototype = {
     changeColour($('#btn' + num), MACHINE_ENABLED);
     $("#btn" + num).html("Disable");
     $("#btn" + num).removeClass("progress");
+    this.el.removeClass("machineDisabled")
     user.showState(num);
   },
   manualDisable: function(num) {
