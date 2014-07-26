@@ -19,12 +19,10 @@ class Bitalino_Thread(threading.Thread):
 		print "Connecting to Bitalino at " + MAC_ADDRESS
 		self.device.start(SAMPLING_RATE, [ BITALINO_PORTS["EDA"] ])
 		print "Done Connecting"
-		for i in xrange(0,5):
+		self.previous_mean = 0
+		for i in xrange(0,50):
 		 	self.take_reading(5*SAMPLING_RATE)
 		print self.deviations
-		print "Max: " + str(numpy.max(self.deviations))
-		print "Min: " + str(numpy.min(self.deviations))
-		print "Mean: " + str(numpy.mean(self.deviations))
 
 	def take_reading(self, samples):
 		self.device.trigger([0,0,1,0]) #digi 2 is the LED
@@ -32,8 +30,8 @@ class Bitalino_Thread(threading.Thread):
 		print data
 		eda_reading = data[:,5]
 		self.device.trigger([0,0,0,0])
-		print "Mean: " + str(numpy.mean(eda_reading))
-		print "Deviation: " + str(numpy.nanstd(eda_reading))
+		net_deviance = self.previous_mean * numpy.nanstd(eda_reading)
+		self.previous_mean = numpy.mean(eda_reading)
 		deviation = numpy.nanstd(eda_reading)
 		if deviation > 45:
 			print "greater than 45"

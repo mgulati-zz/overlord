@@ -50,12 +50,9 @@ imp = electricImp.Imp
 ###############################
 # URL endpoints
 ###############################
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET'])
 def index_page():
-	if request.method == 'POST':
-		return "This is what Lesia needs"
-	else:
-		return app.send_static_file('index.html')
+	return app.send_static_file('index.html')
 
 @app.route("/stop", methods=['GET', 'POST'])
 def update_stopped_status():
