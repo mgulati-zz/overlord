@@ -20,7 +20,7 @@ app = Flask(__name__, static_url_path='')
 
 def initialize_cache():
 	cache.set("machine-is-stopped", {"solenoid": 0, "killswitch": 0}) #represents the machine state in the real world
-	cache.set("user-state", USER_STATES["normal"])
+	cache.set("user-state", USER_STATES["stressed"])
 	cache.set("user-heartrate", 85)
 
 initialize_cache()
@@ -84,12 +84,12 @@ def update_heartrate():
 @app.route("/status", methods=["GET"])
 def get_status():
 	return jsonify(
-		{"adam": {"heartrate": cache.get("user-heartrate"), "state": cache.get("user-state"), "machine": "Bandsaw"},
-		"mayank": {"heartrate": 100, "state": 0, "machine": "Sex LOL"},
-		"nick": {"heartrate": 120, "state": 1, "machine": "Generic Mill 101"},
-		"tom": {"heartrate": 20, "state": 2, "machine": "Drillpress"},
-		"victor": {"heartrate": 40, "state": 0, "machine": "O O O O"},
-		"lesia": {"heartrate": 60, "state": 0, "machine": "Mayank"}
+		{"adam": {"heartrate": cache.get("user-heartrate"), "state": cache.get("user-state"), "machine": "Band Saw"},
+		"mayank": {"heartrate": 100, "state": 0, "machine": "Table Saw"},
+		"nick": {"heartrate": 120, "state": 0, "machine": "Wood Lathe"},
+		"tom": {"heartrate": 20, "state": 0, "machine": "Drill Press"},
+		"victor": {"heartrate": 40, "state": 0, "machine": "Milling Machine"},
+		"lesia": {"heartrate": 60, "state": 0, "machine": "Grinding Machine"}
 		}
 	)
 

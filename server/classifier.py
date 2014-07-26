@@ -17,7 +17,7 @@ class Classifier_Thread(threading.Thread):
 		self.start_time = time.time()
 		self.eda_reading = 0
 		self.machine_weight = 0.5 #represents the relative risk of the machine
-		self.current_state = USER_STATES["normal"]
+		self.current_state = USER_STATES["stressed"]
 
 	def run(self):
 		pub.subscribe(self.set_heart_rate, "classifier.new_heart_rate")

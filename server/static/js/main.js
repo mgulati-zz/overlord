@@ -41,10 +41,14 @@ $(document).ready(function() {
     } else if (!$(this).hasClass(MACHINE_STOPPED)) {
       if ($(this).hasClass(MACHINE_DISABLED)) {
         machine.enabling(num);
-        requestState(num, "false");
+        if (num==SPECIAL_NUMBER){
+          requestState(num, "false");
+        }
       } else {
         machine.disabling(num);
-        requestState(num, "true")
+        if (num==SPECIAL_NUMBER){
+          requestState(num, "true")
+        }
       }
     }
   });
@@ -184,6 +188,12 @@ function changeColour(el, colour) {
 var user = new User(USER_FIT);
 var machine = new Machine(MACHINE_ENABLED);
 
+function machineNameToID(name) {
+  var words = name.split(" ");
+  words[0] = words[0].charAt(0).toLowerCase() + words[0].slice(1)
+  words[1] = words[1].charAt(0).toUpperCase() + words[1].slice(1)
+  return words.join("")
+}
 window.setInterval(function(){
   $.ajax( {
     url: "/status", 
@@ -193,7 +203,6 @@ window.setInterval(function(){
         $("#" + k + " .value.bpm").html(data[k]['heartrate']);
         $("#" + k + " .value.stress").html(data[k]['state']);
         $("#" + k + " .machine").html(data[k]['machine']);
-
         var statusVal = data[k]['state'].toString();
         if (statusVal == "2"){ 
           status=USER_UNFIT_CERTAIN;
@@ -204,10 +213,11 @@ window.setInterval(function(){
         else{
           status=USER_FIT
         }
+
         changeColour($("#"+ k + " .status"), status);
-        if (k=="adam") {
-          user.changeState(SPECIAL_NUMBER, status);
-        }
+        changeColour($("#" + machineNameToID(data[k]['machine']) + " .status"), status);
+        var circle = $(".circle." + k).attr("id").slice(6)
+        user.changeState(circle, status);
       })
     }
   }); 
