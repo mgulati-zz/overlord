@@ -62,6 +62,7 @@ input[type="checkbox"]{
     background-color: #bdc3c7;
     padding-top:25px;
     height:100vh;
+    overflow:hidden;
 }
 
 #nav li{
@@ -229,7 +230,11 @@ input[type="checkbox"]{
     vertical-align: top;
 }
 
-.warningIcon{
+.warning:hover{
+    box-shadow:5px 5px 3px -2px #bbb;
+}
+
+.icon{
     margin-right:20px;
     vertical-align: middle;
 }
@@ -263,7 +268,12 @@ input[type="checkbox"]{
     background-color: #F2F6F7;  
     height:90px; 
     width: 338px;
+    cursor:pointer;
     vertical-align:middle;
+}
+
+.tileButton:hover{
+    box-shadow:5px 5px 3px -2px #bbb;
 }
 
 span{
