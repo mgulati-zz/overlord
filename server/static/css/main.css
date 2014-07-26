@@ -10,6 +10,7 @@ body{
     margin:0;
     height:100vh;
     background-color: #ecf0f1;
+    overflow:hidden;
 }
 
 h1{
@@ -78,7 +79,7 @@ input[type="checkbox"]{
 }
 
 #nav li img:hover{
-    -webkit-filter: invert(20%);
+    /*-webkit-filter: invert(20%);*/
 }
 
 #nav li img{
@@ -100,7 +101,7 @@ input[type="checkbox"]{
 
 
 #nav li.selected{
-    -webkit-filter: invert(20%);
+    -webkit-filter: invert(0%);
 }
 
 #liveView{
