@@ -34,7 +34,7 @@
 				<li id="settings">
 					<div class="navContent">
 						<img src="img/settings.png">
-						<div class="navLabel">Settings</div>
+						<div class="navLabel">Features</div>
 					</div>
 				</li>			
 			</ul>
@@ -43,7 +43,6 @@
 		<div id="rightContent">
 			<div id="liveContent" class="content">
 				<h1>E5 Machine Shop</h1>
-				<img id="stop" src="img/stop.png">
 				<img src="img/floorPlan.png" id="floorPlan">
 				<div class="circle green tip" data-tip="<span><ul class='tooltipContent'><li class='name'>LESIA NALEPA</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn1'>Disable</button>" id="circle1"></div>
 				<div class="circle red tip" data-tip="<span><ul class='tooltipContent'><li class='name'>MAYANK GULATI</li><li>Bandsaw</li></ul></span><button class='button redButton' id='btn2'>Disable</button>" id="circle2"></div>
@@ -59,9 +58,9 @@
 				<div class="tiles" id="userTiles">	
 					<div class="warning">
 					<img src="img/warning.png" class="warningIcon">
-						Your machinists seem most fatigued on Fridays.
+					<span>Your machinists seem most fatigued on Fridays.</span>
 					</div>
-					<div class="warning"></div>
+					<div class="tileButton"><span>Add User</span></div>
 					<!-- <button class="button">Add User</button> -->
 
 					<div class="tile" id="adam">
@@ -266,8 +265,9 @@
 			<div id="machinesContent" class="content">
 				<div class="warning">
 					<img src="img/warning.png" class="warningIcon">
-					The kill switch on the drill press is pressed more than the kill switch on all other machines.
+					<span>The kill switch on the drill press is pressed the most.</span>
 				</div>
+				<div class="tileButton"><span>Add Machine</span></div>
 				<div class="tiles" id="machineTiles">		
 					<div class="tile">
 						<ul class="info">
@@ -416,87 +416,48 @@
 			<div id="settingsContent" class="content">
 <!-- 				<h1>Settings</h1> -->
 				<div id="settingsOptions">
-
-					<h2>Detection</h2><p>Factors to check to allow usage</p>
-					
 					<ul class="row">
+						<h2>Detection</h2><h2 class="second">Monitoring</h2>
+						<li class="settingsTile unselected">
+							<div class="settingsOption"><p>Set user restrictions</p></div>
+						</li>
+						<li class="settingsTile rightMargin">
+							<div class="settingsOption"><p>Set up shop hours</p></div>
+						</li>
+						
 						<li class="settingsTile">
-							<div class="settingsOption"><p>Is the machine shop open?</p></div>
-							<button class="button green">Set Hours</button>
+							<div class="settingsOption"><p>Track user stress</p></div>				
 						</li>
 						<li class="settingsTile">
-							<div class="settingsOption"><p>Is there earthquakes coming?</p></div>
-							<button class="button green">Choose Natural Disasters</button>
+							<div class="settingsOption"><p>Track user fatigue</p></div>			
+						</li>
+						<li class="settingsTile bottomMargin">
+							<div class="settingsOption"><p>???</p></div>
+						</li>
+						<li class="settingsTile rightMargin bottomMargin">
+							<div class="settingsOption"><p>Set machine restrictions</p></div>
+						</li>
+						<li class="settingsTile unselected bottomMargin">
+							<div class="settingsOption"><p>???</p></div>	
+						</li>
+						<li class="settingsTile bottomMargin unselected">
+							<div class="settingsOption"><p>Track user proximity to machine</p></div>				
+						</li>
+						<h2>Prevention</h2><h2 class="second">Analytics</h2>
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Allow automatic... of machines</p></div>
+						</li>
+						<li class="settingsTile rightMargin">
+							<div class="settingsOption"><p>Allow remote.. of machines</p></div>
+						</li>
+
+						<li class="settingsTile">
+							<div class="settingsOption"><p>Track user history</p></div>	
 						</li>
 						<li class="settingsTile">
-							<div class="settingsOption"><p>Is the user trained for machine?</p></div>	
-							<button class="button green">Manage Users</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>Is the machine operational?</p></div>	
-							<button class="button green">Manage Machines</button>			
+							<div class="settingsOption"><p>Provide recommendations</p></div>				
 						</li>
 					</ul>
-
-					<h2>Continuous Monitoring</h2><p></p>
-					<ul class="row">
-						<li class="settingsTile">
-							<div class="settingsOption"><p>EDA signals<br/>Skin Conductance</p></div>
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>ECG Signals<br/>Heartbeat</p></div>
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>User stays near machine</p></div>	
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>Is the machine operational?</p></div>	
-							<button class="button green">Manage Threshold</button>			
-						</li>
-					</ul>
-
-					<h2>Soft Prevention</h2><p></p>
-					<ul class="row">
-						<li class="settingsTile">
-							<div class="settingsOption"><p>EDA signals<br/>Skin Conductance</p></div>
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>ECG Signals<br/>Heartbeat</p></div>
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>User stays near machine</p></div>	
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>Is the machine operational?</p></div>	
-							<button class="button green">Manage Threshold</button>			
-						</li>
-					</ul>
-
-					<h2>Hard prevention</h2><p></p>
-					<ul class="row">
-						<li class="settingsTile">
-							<div class="settingsOption"><p>EDA signals<br/>Skin Conductance</p></div>
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>ECG Signals<br/>Heartbeat</p></div>
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>User stays near machine</p></div>	
-							<button class="button green">Manage Threshold</button>
-						</li>
-						<li class="settingsTile">
-							<div class="settingsOption"><p>Is the machine operational?</p></div>	
-							<button class="button green">Manage Threshold</button>			
-						</li>
-				</ul>
 			</div>
 
 

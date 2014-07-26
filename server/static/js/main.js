@@ -25,6 +25,14 @@ $(document).ready(function() {
     $(".tiles").css("display", "block");
   });
 
+  $(".settingsTile").click(function(){
+    if ($(this).hasClass("unselected")){
+      $(this).removeClass("unselected");
+    }
+    else
+      $(this).addClass("unselected");
+  });
+
   $(".circle").on('click', '.redButton', function(){
     num = $(this).parents('.circle').attr('id').slice(6)
     if (OFFLINE) {

@@ -79,14 +79,6 @@ input[type="checkbox"]{
 }
 
 #nav li img:hover{
-/*    -webkit-opacity: 0.5;
-    -moz-opacity: 0.5;
-    opacity: 0.5;
-    -webkit-transition: all 0.25s ease;
-    -moz-transition: all 0.25s ease;
-    -ms-transition: all 0.25s ease;
-    -o-transition: all 0.25s ease;
-    transition: all 0.25s ease;*/
     -webkit-filter: invert(20%);
 }
 
@@ -103,16 +95,12 @@ input[type="checkbox"]{
 }
 
 .navContent{
-    /*position: relative; top: -50%*/
     position: relative;
     top: 15%;
 }
 
 
 #nav li.selected{
-/*    -webkit-opacity: 0.5;
-    -moz-opacity: 0.5;
-    opacity: 0.5;*/
     -webkit-filter: invert(20%);
 }
 
@@ -225,19 +213,17 @@ input[type="checkbox"]{
   display:none;  
 }
 
-#settingsContent{
-    overflow:auto;
-}
-
 .warning{
     box-sizing:border-box;
     border: 1px solid #ccc;
     padding:20px;
-/*    width: 50%;*/
-    margin: 17px 68px;
+    width: 714px;
+    margin: 17px 17px;
     text-align:left;
     background-color: #F2F6F7;
     display:inline-block;
+    box-shadow: 4px 4px 1px -2px #ccc;
+    vertical-align: top;
 }
 
 .warningIcon{
@@ -246,7 +232,7 @@ input[type="checkbox"]{
 }
 
 .tile{
-    width: 30%;
+    width: 338px;
     height: 250px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -258,6 +244,27 @@ input[type="checkbox"]{
     position:relative;
     text-align:left;
     background-color: #F2F6F7;
+}
+
+.tileButton{
+    width: 338px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 17px 17px;
+    padding:20px;
+    box-sizing:border-box;
+/*    cursor: pointer;*/
+    box-shadow: 4px 4px 1px -2px #ccc;
+    position:relative;
+    text-align:middle;
+    background-color: #F2F6F7;  
+    height:90px; 
+    width: 338px;
+    vertical-align:middle;
+}
+
+span{
+    vertical-align: middle;
 }
 
 .tile div{
@@ -289,6 +296,7 @@ input[type="checkbox"]{
 
 #settingsOptions{
     text-align: left;
+    padding:0 50px 100px 50px;
 }
 
 #applyButton{
@@ -355,17 +363,22 @@ input[type="checkbox"]{
 }
 
 .settingsTile{
-    width: 21%;
-    height: 150px;
+    width: 244px;
+    height: 170px;
     display: inline-block;
     border: 1px solid #ccc;
-    margin: 17px 17px;
+    margin: 10px 10px;
     box-sizing:border-box;
-/*    cursor: pointer;*/
+    cursor: pointer;
     box-shadow: 4px 4px 1px -2px #ccc;
     position:relative;
-    text-align:left;
+    text-align:center;
     background-color: #F2F6F7;
+    vertical-align:top;
+}
+
+.settingsTile:hover{
+    box-shadow:5px 5px 3px -2px #bbb;
 }
 
 .settingsTile .button{
@@ -384,10 +397,33 @@ input[type="checkbox"]{
     box-sizing:border-box;
 }
 
+.unselected{
+    opacity:0.4;
+}
+
 .row{
     display:inline;
     height:160px;
 }
 
+.rightMargin{
+    margin-right:50px;
+}
+
+.bottomMargin{
+    margin-bottom:50px;
+}
+
+#settingsOptions h2{
+    display: inline-block;
+    width: 558px;
+    padding-left:10px;
+    box-sizing:border-box;
+    padding-bottom:0px;
+}
+
+#settingsOptions h2.second{
+    padding-left:30px;
+}
 
 
