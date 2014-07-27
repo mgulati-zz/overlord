@@ -384,7 +384,7 @@ span{
     width: 244px;
     height: 170px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #008B00;
     margin: 10px 10px;
     box-sizing:border-box;
     cursor: pointer;
@@ -393,6 +393,7 @@ span{
     text-align:center;
     background-color: #F2F6F7;
     vertical-align:top;
+    border-bottom:10px solid #008B00;
 }
 
 .settingsTile:hover{
@@ -415,8 +416,10 @@ span{
     box-sizing:border-box;
 }
 
-.unselected{
+.settingsTile.unselected{
     opacity:0.4;
+    border: 1px solid grey;
+    border-bottom:10px solid grey;
 }
 
 .row{
