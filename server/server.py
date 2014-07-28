@@ -34,7 +34,7 @@ initialize_cache()
 def on_new_bitalino_data(new_eda_std, new_eda_mean):
 	cache.set("user-eda-std", new_eda_std)
 	cache.set("user-eda-mean", new_eda_mean)
-	pub.sendMessage('classifier.set_eda', new_eda_std=5, new_eda_mean=10)
+	pub.sendMessage('classifier.set_eda', new_eda_std=new_eda_std, new_eda_mean=new_eda_mean)
 
 def on_new_classification(new_class, eda_std, eda_mean):
 	current_state = "normal"
@@ -50,7 +50,7 @@ pub.subscribe(on_new_bitalino_data, 'bitalino.new_data')
 pub.subscribe(on_new_classification, 'classifier.new_class')
 bitalino_thread = bitalinoThread.Bitalino_Thread()
 classifier_thread = classifier.Classifier_Thread()
-#bitalino_thread.start()
+bitalino_thread.start()
 classifier_thread.start()
 imp = electricImp.Imp
 

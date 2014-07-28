@@ -5,7 +5,7 @@ from pubsub import pub
 
 USER_STATES = {"normal": 0, "fatigued": 1, "stressed": 2}
 HEART_RATE_NORMALIZATION_FACTOR = 140.0 #the maximum heartrate recorded in test data
-EDA_NORMALIZATION_FACTOR = 10.0 #maximum EDA reading in test data
+EDA_NORMALIZATION_FACTOR = 1.8 * 920 #Average standard deviation * maximum EDA reading in test data
 TIME_NORMALIZATION_FACTOR = 10800.0 #maximum time at a machine (3 hours for now)
 AGE_NORMALIZATION_FACTOR = 10000
 
@@ -40,12 +40,12 @@ class Classifier_Thread(threading.Thread):
 		eda_factor = self.eda_std*self.eda_mean/EDA_NORMALIZATION_FACTOR
 		fitness_factor = numpy.sqrt(heartrate_factor**2+eda_factor**2)
 		print 'fitness_factor is ' + str(fitness_factor)
-		if fitness_factor<0.7:
+		if fitness_factor<0.5:
 			self.current_state=USER_STATES["fatigued"]
-		elif fitness_factor>=0.7 and fitness_factor <= 1.3:
-			self.current_state=USER_STATES["normal"]
-		else:
+		elif fitness_factor>3:
 			self.current_state=USER_STATES["stressed"]
+		else:
+			self.current_state=USER_STATES["normal"]
 
 		pub.sendMessage('classifier.new_class', new_class=self.current_state, eda_std=self.eda_std, eda_mean=self.eda_mean)
 
