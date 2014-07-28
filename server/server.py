@@ -21,6 +21,7 @@ app = Flask(__name__, static_url_path='')
 def initialize_cache():
 	cache.set("machine-is-stopped", {"solenoid": 0, "killswitch": 0}) #represents the machine state in the real world
 	cache.set("user-state", USER_STATES["stressed"])
+	cache.set("user-heartrate", 85)
 	cache.set("user-eda-std", 5)
 	cache.set("user-eda-mean", 10)
 

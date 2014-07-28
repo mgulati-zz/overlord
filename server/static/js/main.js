@@ -11,6 +11,9 @@ USER_UNFIT_CERTAIN = "red"
 
 SPECIAL_NUMBER = 4
 
+_userReq = null;
+_machineReq = null;
+
 $(document).ready(function() {
   //$("body").css("height", window.innerHeight);
   $('.tip').tipr();
@@ -74,11 +77,13 @@ function requestState(num, state) {
     type: "POST",
     data: JSON.stringify({"stopped": state}),
     success: function(data) {
-      if (state == "false") {
-        machine.setState(SPECIAL_NUMBER, MACHINE_ENABLED)
-      } else if (state == "true") {
-        machine.setState(SPECIAL_NUMBER, MACHINE_DISABLED)
-      }
+      machine.progress = false;
+      buttonReq();
+      // if (state == "false") {
+      //   machine.setState(SPECIAL_NUMBER, MACHINE_ENABLED)
+      // } else if (state == "true") {
+      //   machine.setState(SPECIAL_NUMBER, MACHINE_DISABLED)
+      // }
       //resp = machine.interpretState(data);
     },
     contentType: "application/json",
@@ -112,35 +117,36 @@ User.prototype = {
 function Machine(state) {
   this.state=state
   this.el = $("#bandsaw")
+  this.progress = false
 }
 
 Machine.prototype = {
   disable: function(num) {
     changeColour($('#btn' + num), MACHINE_DISABLED)
     $("#btn" + num).html("Enable");
-    $("#btn" + num).removeClass("progress");
+    this.progress = false;
     this.el.addClass("machineDisabled")
     user.showDisabled(num);
   },
   disabling: function(num) {
     $("#btn" + num).html("Disabling..");
-    $("#btn" + num).addClass("progress");
+    this.progress = true;
   },
   enabling: function(num) {
     $("#btn" + num).html("Enabling..");
-    $("#btn" + num).addClass("progress");
+    this.progress = true;
   },
   enable: function(num) {
     changeColour($('#btn' + num), MACHINE_ENABLED);
     $("#btn" + num).html("Disable");
-    $("#btn" + num).removeClass("progress");
+    this.progress = false;
     this.el.removeClass("machineDisabled")
     user.showState(num);
   },
   manualDisable: function(num) {
     changeColour($('#btn' + num), MACHINE_STOPPED);
     $("#btn" + num).html("Stopped");
-    $("#btn" + num).removeClass("progress");
+    this.progress = false;
     user.showDisabled(num);
   },
   setState: function(num, state) {
@@ -194,43 +200,48 @@ function machineNameToID(name) {
   words[1] = words[1].charAt(0).toUpperCase() + words[1].slice(1)
   return words.join("")
 }
-window.setInterval(function(){
-  $.ajax( {
-    url: "/status", 
-    //url: "jsonData.json", 
-    success: function(data) {
-      $.each(data, function(k,v) {
-        $("#" + k + " .value.bpm").html(data[k]['heartrate']);
-        $("#" + k + " .value.stress").html(data[k]['state']);
-        $("#" + k + " .machine").html(data[k]['machine']);
-        var statusVal = data[k]['state'].toString();
-        if (statusVal == "2"){ 
-          status=USER_UNFIT_CERTAIN;
-        }
-        else if (statusVal == "1"){
-          status=USER_UNFIT_UNCERTAIN;
-        }
-        else{
-          status=USER_FIT
-        }
 
-        changeColour($("#"+ k + " .status"), status);
-        changeColour($("#" + machineNameToID(data[k]['machine']) + " .status"), status);
-        var circle = $(".circle." + k).attr("id").slice(6)
-        user.changeState(circle, status);
-      })
-    }
-  }); 
+// window.setInterval(function() {
+//   _userReq = $.ajax( {
+//     url: "/status", 
+//     //url: "jsonData.json", 
+//     success: function(data) {
+//       $.each(data, function(k,v) {
+//         $("#" + k + " .value.bpm").html(data[k]['heartrate']);
+//         $("#" + k + " .value.stress").html(data[k]['state']);
+//         $("#" + k + " .machine").html(data[k]['machine']);
+//         var statusVal = data[k]['state'].toString();
+//         if (statusVal == "2"){ 
+//           status=USER_UNFIT_CERTAIN;
+//         }
+//         else if (statusVal == "1"){
+//           status=USER_UNFIT_UNCERTAIN;
+//         }
+//         else{
+//           status=USER_FIT
+//         }
 
-  $.ajax( {
+//         changeColour($("#"+ k + " .status"), status);
+//         changeColour($("#" + machineNameToID(data[k]['machine']) + " .status"), status);
+//         var circle = $(".circle." + k).attr("id").slice(6)
+//         user.changeState(circle, status);
+//       })
+//     }
+//   }); 
+// }, 500);
+
+
+function buttonReq() {
+  _machineReq = $.ajax({
     url: "/stop",
     success: function(data) {
-      if (!$("#btn4").hasClass("progress")) {
+      if (!machine.progress) {
         machine.interpretState(data);
+        return buttonReq();
       }
     }
   });
-}, 2000);
+}; buttonReq();
 
 
 

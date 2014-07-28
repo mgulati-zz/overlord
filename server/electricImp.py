@@ -9,7 +9,7 @@ class Imp():
   @staticmethod  
   def send_state(state):
     # urllib2.urlopen("https://agent.electricimp.com/DISiQRNUIly9?stopped=" + state).read()
-    return urllib2.urlopen("https://agent.electricimp.com/j9D9R5FQYOBy?stopped=" + state).read()
+    return urllib2.urlopen("https://agent.electricimp.com/j9D9R5FQYOBy?stopped=" + state)
 
   @staticmethod
   def interpret_state(state):
