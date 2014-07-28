@@ -330,6 +330,17 @@ span{
     margin-top:10px;
 }
 
+.data.stateContainer {
+    width: 100%;
+    padding-top: 5%;
+
+}
+.data.stateContainer .machineState{
+    display: block;
+
+}
+
+
 .info li{
     margin-bottom:5px;
 }

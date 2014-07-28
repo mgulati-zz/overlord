@@ -119,6 +119,7 @@ Machine.prototype = {
     changeColour($('#btn' + num), MACHINE_DISABLED)
     changeColour($("#bandSaw .status"), MACHINE_DISABLED);
     $("#btn" + num).html("Enable");
+    $("#bandSaw .machineState").html("Disabled")
     this.progress = false;
     this.el.addClass("machineDisabled")
     user.showDisabled(num);
@@ -135,6 +136,7 @@ Machine.prototype = {
     changeColour($('#btn' + num), MACHINE_ENABLED);
     changeColour($("#bandSaw .status"), MACHINE_ENABLED);
     $("#btn" + num).html("Disable");
+    $("#bandSaw .machineState").html("Enabled")
     this.progress = false;
     this.el.removeClass("machineDisabled")
     user.showState(num);
@@ -143,6 +145,7 @@ Machine.prototype = {
     changeColour($('#btn' + num), MACHINE_STOPPED);
     changeColour($("#bandSaw .status"), MACHINE_STOPPED);
     $("#btn" + num).html("Stopped");
+    $("#bandSaw .machineState").html("Stopped")
     this.progress = false;
     user.showDisabled(num);
   },
