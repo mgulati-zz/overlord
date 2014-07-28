@@ -3,7 +3,7 @@ OFFLINE = false
 
 //visual colour states
 MACHINE_DISABLED = "green"
-MACHINE_STOPPED = "yellow"
+MACHINE_STOPPED = "disabled"
 MACHINE_ENABLED = "red"
 USER_FIT = "green"
 USER_UNFIT_UNCERTAIN = "yellow"
@@ -201,34 +201,34 @@ function machineNameToID(name) {
   return words.join("")
 }
 
-// window.setInterval(function() {
-//   _userReq = $.ajax( {
-//     url: "/status", 
-//     //url: "jsonData.json", 
-//     success: function(data) {
-//       $.each(data, function(k,v) {
-//         $("#" + k + " .value.bpm").html(data[k]['heartrate']);
-//         $("#" + k + " .value.stress").html(data[k]['state']);
-//         $("#" + k + " .machine").html(data[k]['machine']);
-//         var statusVal = data[k]['state'].toString();
-//         if (statusVal == "2"){ 
-//           status=USER_UNFIT_CERTAIN;
-//         }
-//         else if (statusVal == "1"){
-//           status=USER_UNFIT_UNCERTAIN;
-//         }
-//         else{
-//           status=USER_FIT
-//         }
+window.setInterval(function() {
+  _userReq = $.ajax( {
+    url: "/status", 
+    //url: "jsonData.json", 
+    success: function(data) {
+      $.each(data, function(k,v) {
+        $("#" + k + " .value.bpm").html(data[k]['heartrate']);
+        $("#" + k + " .value.stress").html(data[k]['state']);
+        $("#" + k + " .machine").html(data[k]['machine']);
+        var statusVal = data[k]['state'].toString();
+        if (statusVal == "2"){ 
+          status=USER_UNFIT_CERTAIN;
+        }
+        else if (statusVal == "1"){
+          status=USER_UNFIT_UNCERTAIN;
+        }
+        else{
+          status=USER_FIT
+        }
 
-//         changeColour($("#"+ k + " .status"), status);
-//         changeColour($("#" + machineNameToID(data[k]['machine']) + " .status"), status);
-//         var circle = $(".circle." + k).attr("id").slice(6)
-//         user.changeState(circle, status);
-//       })
-//     }
-//   }); 
-// }, 500);
+        changeColour($("#"+ k + " .status"), status);
+        changeColour($("#" + machineNameToID(data[k]['machine']) + " .status"), status);
+        var circle = $(".circle." + k).attr("id").slice(6)
+        user.changeState(circle, status);
+      })
+    }
+  }); 
+}, 500);
 
 
 function buttonReq() {
