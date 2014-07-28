@@ -47,7 +47,7 @@ class Classifier_Thread(threading.Thread):
 		else:
 			self.current_state=USER_STATES["normal"]
 
-		pub.sendMessage('classifier.new_class', new_class=self.current_state, eda_std=self.eda_std, eda_mean=self.eda_mean, fitness_factor=self.fitness_factor)
+		pub.sendMessage('classifier.new_class', new_class=self.current_state, eda_std=self.eda_std, eda_mean=self.eda_mean, fitness_factor=fitness_factor)
 
 def classify_user(heart_rate, eda_variance, normalized_time, machine_weight):
 	#do something
