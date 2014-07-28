@@ -202,7 +202,7 @@ function machineNameToID(name) {
 }
 
 window.setInterval(function() {
-  _userReq = $.ajax( {
+  $.ajax( {
     url: "/status", 
     //url: "jsonData.json", 
     success: function(data) {
@@ -228,11 +228,11 @@ window.setInterval(function() {
       })
     }
   }); 
-}, 500);
+}, 2000);
 
 
 function buttonReq() {
-  _machineReq = $.ajax({
+  $.ajax({
     url: "/stop",
     success: function(data) {
       if (!machine.progress) {
