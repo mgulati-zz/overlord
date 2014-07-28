@@ -41,7 +41,7 @@ $(document).ready(function() {
     num = $(this).parents('.circle').attr('id').slice(6)
     if (OFFLINE) {
       disable(num);
-    } else if (!$(this).hasClass(MACHINE_STOPPED)) {
+    } else if (!$(this).hasClass(MACHINE_STOPPED) && num == SPECIAL_NUMBER) {
       if ($(this).hasClass(MACHINE_DISABLED)) {
         machine.enabling(num);
         if (num==SPECIAL_NUMBER){
@@ -59,7 +59,7 @@ $(document).ready(function() {
   $(".circle").on('hover', function(e) {
     if ($(e.target).hasClass("circle")) {
       num = $(e.target).attr("id").slice(6)
-      machine.setState(num, machine.state);
+      if (num == SPECIAL_NUMBER) machine.setState(num, machine.state);
     }
   });
 
