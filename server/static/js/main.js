@@ -205,18 +205,24 @@ window.setInterval(function() {
     success: function(data) {
       $.each(data, function(k,v) {
         $("#" + k + " .value.bpm").html(data[k]['heartrate']);
-        $("#" + k + " .value.stress").html(data[k]['state']);
+
         $("#" + k + " .machine").html(data[k]['machine']);
         var statusVal = data[k]['state'].toString();
+        var statusName = "Normal"
         if (statusVal == "2"){ 
           status=USER_UNFIT_CERTAIN;
+          statusName = "Impaired"
+
         }
         else if (statusVal == "1"){
           status=USER_UNFIT_UNCERTAIN;
+          statusName = "Fatigued"
         }
         else{
           status=USER_FIT
         }
+
+        $("#" + k + " .value.stress").html(statusName);
 
         changeColour($("#"+ k + " .status"), status);
         var circle = $(".circle." + k).attr("id").slice(6)
