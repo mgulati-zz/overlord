@@ -7,6 +7,7 @@ import bitalinoThread
 import classifier
 import electricImp
 import json
+import numpy
 
 
 USER_STATES = classifier.USER_STATES
@@ -24,6 +25,7 @@ def initialize_cache():
 	cache.set("user-heartrate", 85)
 	cache.set("user-eda-std", 5)
 	cache.set("user-eda-mean", 10)
+	cache.set("user-fitness", 3)
 
 
 initialize_cache()
@@ -37,7 +39,7 @@ def on_new_bitalino_data(new_eda_std, new_eda_mean):
 	cache.set("user-eda-mean", new_eda_mean)
 	pub.sendMessage('classifier.set_eda', new_eda_std=new_eda_std, new_eda_mean=new_eda_mean)
 
-def on_new_classification(new_class, eda_std, eda_mean):
+def on_new_classification(new_class, eda_std, eda_mean, fitness_factor):
 	current_state = "normal"
 	print "new class is " + str(new_class) 
 	for state, value in USER_STATES.items():
@@ -48,6 +50,7 @@ def on_new_classification(new_class, eda_std, eda_mean):
 			cache.set("user-state", value)
 			cache.set("user-eda-std", eda_std)
 			cache.set("user-eda-mean", eda_mean)
+			cache.set("user-fitness", fitness_factor)
 
 pub.subscribe(on_new_bitalino_data, 'bitalino.new_data')
 pub.subscribe(on_new_classification, 'classifier.new_class')
@@ -99,7 +102,7 @@ def set_eda():
 @app.route("/status", methods=["GET"])
 def get_status():
 	return jsonify(
-		{"adam": {"heartrate": cache.get("user-heartrate"), "state": cache.get("user-state"), "machine": "Band Saw"},
+		{"adam": {"heartrate": numpy.floor(15*numpy.log(cache.get("user-fitness")) + 75), "state": cache.get("user-state"), "machine": "Band Saw"},
 		"mayank": {"heartrate": 100, "state": 0, "machine": "Table Saw"},
 		"nick": {"heartrate": 120, "state": 0, "machine": "Wood Lathe"},
 		"tom": {"heartrate": 20, "state": 0, "machine": "Drill Press"},
