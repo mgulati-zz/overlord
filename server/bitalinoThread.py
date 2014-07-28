@@ -18,7 +18,7 @@ class Bitalino_Thread(threading.Thread):
 		self.device.start(SAMPLING_RATE, [ 1 ])
 		print "Done Connecting"
 		self.previous_mean = 0
-		for i in xrange(0,100):
+		while True:
 		 	self.take_reading(2*SAMPLING_RATE)
 		print self.deviations
 		print "Deviation Mean: " + str(numpy.mean(self.deviations))

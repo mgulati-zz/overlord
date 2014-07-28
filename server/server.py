@@ -27,6 +27,7 @@ def initialize_cache():
 
 
 initialize_cache()
+imp = electricImp.Imp
 
 ###############################
 # Threading
@@ -42,6 +43,9 @@ def on_new_classification(new_class, eda_std, eda_mean):
 	for state, value in USER_STATES.items():
 		if value == new_class:
 			current_state = state
+			if current_state != "normal":
+				print "hit"
+				imp.send_state("true")
 			cache.set("user-state", value)
 			cache.set("user-eda-std", eda_std)
 			cache.set("user-eda-mean", eda_mean)
@@ -52,7 +56,6 @@ bitalino_thread = bitalinoThread.Bitalino_Thread()
 classifier_thread = classifier.Classifier_Thread()
 bitalino_thread.start()
 classifier_thread.start()
-imp = electricImp.Imp
 
 ###############################
 # URL endpoints
