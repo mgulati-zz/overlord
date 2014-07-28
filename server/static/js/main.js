@@ -79,12 +79,6 @@ function requestState(num, state) {
     success: function(data) {
       machine.progress = false;
       buttonReq();
-      // if (state == "false") {
-      //   machine.setState(SPECIAL_NUMBER, MACHINE_ENABLED)
-      // } else if (state == "true") {
-      //   machine.setState(SPECIAL_NUMBER, MACHINE_DISABLED)
-      // }
-      //resp = machine.interpretState(data);
     },
     contentType: "application/json",
     dataType: "json"
@@ -116,13 +110,14 @@ User.prototype = {
 
 function Machine(state) {
   this.state=state
-  this.el = $("#bandsaw")
+  this.el = $("#bandSaw")
   this.progress = false
 }
 
 Machine.prototype = {
   disable: function(num) {
     changeColour($('#btn' + num), MACHINE_DISABLED)
+    changeColour($("#bandSaw .status"), MACHINE_DISABLED);
     $("#btn" + num).html("Enable");
     this.progress = false;
     this.el.addClass("machineDisabled")
@@ -138,6 +133,7 @@ Machine.prototype = {
   },
   enable: function(num) {
     changeColour($('#btn' + num), MACHINE_ENABLED);
+    changeColour($("#bandSaw .status"), MACHINE_ENABLED);
     $("#btn" + num).html("Disable");
     this.progress = false;
     this.el.removeClass("machineDisabled")
@@ -145,6 +141,7 @@ Machine.prototype = {
   },
   manualDisable: function(num) {
     changeColour($('#btn' + num), MACHINE_STOPPED);
+    changeColour($("#bandSaw .status"), MACHINE_STOPPED);
     $("#btn" + num).html("Stopped");
     this.progress = false;
     user.showDisabled(num);
@@ -182,7 +179,7 @@ Machine.prototype = {
 }
 
 function changeColour(el, colour) {
-  colours = ["green", "yellow", "red"]
+  colours = ["green", "yellow", "red", "disabled"]
   el.addClass(colour)
   colours.map(function(item) {
     if (item != colour) {
@@ -222,7 +219,6 @@ window.setInterval(function() {
         }
 
         changeColour($("#"+ k + " .status"), status);
-        changeColour($("#" + machineNameToID(data[k]['machine']) + " .status"), status);
         var circle = $(".circle." + k).attr("id").slice(6)
         user.changeState(circle, status);
       })
