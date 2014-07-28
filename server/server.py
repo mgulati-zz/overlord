@@ -44,7 +44,6 @@ def on_new_classification(new_class, eda_std, eda_mean):
 		if value == new_class:
 			current_state = state
 			if current_state != "normal":
-				print "hit"
 				imp.send_state("true")
 			cache.set("user-state", value)
 			cache.set("user-eda-std", eda_std)
