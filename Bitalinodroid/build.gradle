@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 18
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:18.0.0'
+    compile 'com.bitalino:bitalino-java-sdk:1.0-RC2'
+    compile 'org.roboguice:roboguice:3.0b-experimental'
+    compile 'com.squareup.retrofit:retrofit:1.4.1'
+}
